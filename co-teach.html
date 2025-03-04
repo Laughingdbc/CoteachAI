@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CO-TEACH - Effective AI Prompting Framework</title>
+    <title>CO-TEACH Framework - AI Prompting for Educators</title>
     
     <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -86,62 +86,54 @@
             <h1 class="text-2xl font-bold">AI for GP</h1>
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="index.html" class="hover:underline">Prompt Collection</a></li>
                     <li><a href="co-teach.html" class="font-bold border-b-2 border-white">CO-TEACH Framework</a></li>
-                    <li><a href="teach.html" class="hover:underline">TEACH Framework</a></li>
+                    <li><a href="co-prompts.html" class="hover:underline">CO Prompts</a></li>
+                    <li><a href="teach-prompts.html" class="hover:underline">TEACH Prompts</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main class="flex-grow p-4 max-w-6xl mx-auto w-full">
-        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
-            <div class="p-6">
-                <h2 class="text-3xl font-bold mb-4 text-blue-700">The CO-TEACH Framework</h2>
-                <p class="mb-6 text-lg">
-                    An expanded approach to AI prompting that combines <strong>brainstorming</strong> with <strong>structured execution</strong>. This dual-phase framework helps teachers use AI as a co-intelligent partner in the classroom.
+        <!-- Introduction Banner -->
+        <div class="bg-gradient-to-r from-blue-500 to-yellow-500 text-white rounded-lg shadow-md overflow-hidden mb-6">
+            <div class="p-8">
+                <h1 class="text-4xl font-bold mb-4">The CO-TEACH Framework</h1>
+                <p class="text-xl mb-4">
+                    A powerful approach to using AI as a co-intelligent partner in education
                 </p>
-
-                <!-- Overview Section -->
-                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 mb-8">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-700">Framework Overview</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div>
-                            <div class="bg-white p-4 rounded-lg border border-blue-200 mb-4">
-                                <h4 class="font-bold text-xl text-blue-600 mb-2">CO Phase</h4>
-                                <p class="mb-2"><strong>C</strong>reate <strong>O</strong>ptions</p>
-                                <p class="text-gray-700">The brainstorming phase where you explore multiple possibilities before committing to a specific approach. Ideal for creative tasks and when you need diverse ideas.</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-blue-200">
-                                <p class="font-medium mb-2">When to start with CO:</p>
-                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                                    <li>You need multiple approaches or ideas</li>
-                                    <li>You're not sure which direction to take</li>
-                                    <li>You want to explore creative possibilities</li>
-                                    <li>You're beginning a new project or unit</li>
-                                    <li>You need to break through a planning block</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="bg-white p-4 rounded-lg border border-yellow-200 mb-4">
-                                <h4 class="font-bold text-xl text-yellow-600 mb-2">TEACH Phase</h4>
-                                <p class="mb-2"><strong>T</strong>ask • <strong>E</strong>xample • <strong>A</strong>udience • <strong>C</strong>ontext • <strong>H</strong>ow to Format</p>
-                                <p class="text-gray-700">The structured execution phase where you refine your chosen approach to create a polished, classroom-ready result.</p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-yellow-200">
-                                <p class="font-medium mb-2">When to go straight to TEACH:</p>
-                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                                    <li>You have a clear goal in mind</li>
-                                    <li>You're refining or iterating on existing work</li>
-                                    <li>You need a specific format for immediate use</li>
-                                    <li>You're short on time and need a direct result</li>
-                                    <li>You know exactly what you want the AI to create</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex flex-wrap gap-6 mt-6">
+                    <a href="#co-section" class="bg-white text-blue-600 hover:bg-blue-50 font-bold py-2 px-6 rounded-lg transition flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        <span>CO Phase</span>
+                    </a>
+                    <a href="#teach-section" class="bg-white text-yellow-600 hover:bg-yellow-50 font-bold py-2 px-6 rounded-lg transition flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                        <span>TEACH Phase</span>
+                    </a>
+                    <a href="co-prompts.html" class="bg-white text-gray-800 hover:bg-gray-100 font-bold py-2 px-6 rounded-lg transition flex items-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
+                            <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z" />
+                        </svg>
+                        <span>Ready-to-Use Prompts</span>
+                    </a>
                 </div>
+            </div>
+        </div>
+
+        <!-- Framework Overview -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Framework Overview</h2>
+                <p class="mb-6 text-lg text-gray-700">
+                    The CO-TEACH framework combines <strong>brainstorming</strong> with <strong>structured execution</strong> to help you get the most out of AI. 
+                    This dual-phase approach treats AI as a co-intelligent partner in your educational practice, first exploring possibilities, then refining the best ideas into classroom-ready resources.
+                </p>
 
                 <!-- Flow Diagram -->
                 <div class="mb-10">
@@ -217,232 +209,592 @@
                     </div>
                 </div>
 
-                <!-- Benefits of CO Phase -->
-                <div class="mb-10">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-700">Why Start with the CO Phase?</h3>
-                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
-                        <p class="mb-4">
-                            The CO phase represents a critical thinking approach where AI serves as a co-intelligent partner in your ideation process. 
-                            Starting with "Create Options" offers several key advantages:
-                        </p>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                <h4 class="font-bold text-lg mb-2 text-blue-600">Expanded Possibilities</h4>
-                                <p class="text-gray-700">
-                                    AI can rapidly generate diverse approaches to a teaching challenge, exposing you to ideas you might not have considered. 
-                                    This broadens your perspective and provides a range of options to evaluate.
-                                </p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                <h4 class="font-bold text-lg mb-2 text-blue-600">Creative Breakthrough</h4>
-                                <p class="text-gray-700">
-                                    When facing a creative block, starting with CO allows you to quickly generate multiple starting points.
-                                    These initial ideas can spark your own creativity and lead to innovative teaching approaches.
-                                </p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                <h4 class="font-bold text-lg mb-2 text-blue-600">Decision Support</h4>
-                                <p class="text-gray-700">
-                                    Having multiple options helps you make more informed decisions about which approach best suits your students' needs and your teaching style.
-                                    You can evaluate ideas rather than just accepting the first solution.
-                                </p>
-                            </div>
-                            <div class="bg-white p-4 rounded-lg border border-gray-200">
-                                <h4 class="font-bold text-lg mb-2 text-blue-600">Time Efficiency</h4>
-                                <p class="text-gray-700">
-                                    While it may seem counterintuitive, exploring options first often saves time in the long run by preventing you from investing effort in a single approach that may not be optimal.
-                                </p>
-                            </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-6">
+                    <div>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-4">
+                            <h4 class="font-bold text-xl text-blue-600 mb-2">CO Phase</h4>
+                            <p class="mb-2"><strong>C</strong>reate <strong>O</strong>ptions</p>
+                            <p class="text-gray-700">The brainstorming phase where you explore multiple possibilities before committing to a specific approach. Ideal for creative tasks and when you need diverse ideas.</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-blue-200">
+                            <p class="font-medium mb-2">When to start with CO:</p>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>You need multiple approaches or ideas</li>
+                                <li>You're not sure which direction to take</li>
+                                <li>You want to explore creative possibilities</li>
+                                <li>You're beginning a new project or unit</li>
+                                <li>You need to break through a planning block</li>
+                            </ul>
                         </div>
                     </div>
-                </div>
-
-                <!-- CO Phase Detail -->
-                <div class="mb-10">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-700">The CO Phase: Creating Options</h3>
-                    <div class="bg-white p-6 rounded-lg border border-blue-100">
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-lg mb-2">1. Divergent Thinking</h4>
-                                <p class="text-gray-700">
-                                    Ask AI to generate multiple different approaches to your challenge. 
-                                    Focus on quantity and diversity of ideas rather than depth at this stage.
-                                </p>
-                            </div>
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-lg mb-2">2. Evaluation</h4>
-                                <p class="text-gray-700">
-                                    Critically assess the options based on your specific needs, constraints, and teaching context.
-                                    Consider which options best align with your goals.
-                                </p>
-                            </div>
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-bold text-lg mb-2">3. Selection</h4>
-                                <p class="text-gray-700">
-                                    Choose the most promising option(s) to develop further using the TEACH framework.
-                                    You may combine elements from multiple options.
-                                </p>
-                            </div>
+                    <div>
+                        <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200 mb-4">
+                            <h4 class="font-bold text-xl text-yellow-600 mb-2">TEACH Phase</h4>
+                            <p class="mb-2"><strong>T</strong>ask • <strong>E</strong>xample • <strong>A</strong>udience • <strong>C</strong>ontext • <strong>H</strong>ow to Format</p>
+                            <p class="text-gray-700">The structured execution phase where you refine your chosen approach to create a polished, classroom-ready result.</p>
                         </div>
-
-                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6">
-                            <h4 class="font-bold text-lg mb-2">Effective CO Prompts Should:</h4>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <ul class="list-disc pl-5 text-gray-700">
-                                    <li>Ask for multiple different approaches</li>
-                                    <li>Encourage variety in the generated options</li>
-                                    <li>Specify the number of options you want</li>
-                                    <li>Include some constraints or requirements</li>
-                                </ul>
-                                <ul class="list-disc pl-5 text-gray-700">
-                                    <li>Provide enough context for relevance</li>
-                                    <li>Request brief summaries of each option</li>
-                                    <li>Ask for the pros and cons of each approach</li>
-                                    <li>Avoid being too specific about implementation</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="bg-blue-50 p-4 rounded-lg">
-                            <h4 class="font-bold text-lg mb-2">Example CO Prompt:</h4>
-                            <p class="italic bg-white p-3 rounded border border-gray-200 text-gray-700">
-                                "Generate 3-5 different approaches for teaching fractions to 4th graders who are struggling with the concept. 
-                                For each approach, provide a brief summary, the main learning style it targets, and 2-3 pros and cons. 
-                                Our classroom has access to basic manipulatives and tablets, but no specialized math equipment."
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- TEACH Framework Summary -->
-                <div class="mb-10">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-700">The TEACH Phase: Structured Execution</h3>
-                    <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
-                        <p class="mb-4">
-                            After exploring options with the CO phase, the TEACH framework helps you develop your chosen approach into a detailed, classroom-ready resource:
-                        </p>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-                            <div class="bg-white p-3 rounded-lg border border-blue-100">
-                                <h4 class="font-bold text-lg text-blue-700">T</h4>
-                                <p class="font-medium">Task</p>
-                                <p class="text-sm text-gray-600">Define what you want the AI to create with a clear action verb</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-yellow-100">
-                                <h4 class="font-bold text-lg text-yellow-600">E</h4>
-                                <p class="font-medium">Example</p>
-                                <p class="text-sm text-gray-600">Provide models or samples to guide the AI's output style and quality</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-green-100">
-                                <h4 class="font-bold text-lg text-green-600">A</h4>
-                                <p class="font-medium">Audience</p>
-                                <p class="text-sm text-gray-600">Define the persona AI should adopt and who the content is for</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-purple-100">
-                                <h4 class="font-bold text-lg text-purple-600">C</h4>
-                                <p class="font-medium">Context</p>
-                                <p class="text-sm text-gray-600">Provide background details that make the response relevant</p>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border border-red-100">
-                                <h4 class="font-bold text-lg text-red-600">H</h4>
-                                <p class="font-medium">How to Format</p>
-                                <p class="text-sm text-gray-600">Specify the structure and organization of the response</p>
-                            </div>
-                        </div>
-                        
-                        <div class="bg-white p-4 rounded-lg border border-gray-200">
-                            <h4 class="font-bold text-lg mb-2">Example TEACH Prompt (Building on CO Selection):</h4>
-                            <p class="italic bg-yellow-50 p-3 rounded text-gray-700">
-                                "<span class="text-blue-600 font-medium">T:</span> Create a complete lesson plan for teaching fractions using the manipulatives approach.<br><br>
-                                <span class="text-yellow-600 font-medium">E:</span> Follow this general structure: learning objectives, prerequisite knowledge, materials needed, warm-up activity, main instruction, guided practice, independent practice, assessment, and extensions.<br><br>
-                                <span class="text-green-600 font-medium">A:</span> This is for 4th grade students who are visual and kinesthetic learners struggling with the concept of equivalent fractions.<br><br>
-                                <span class="text-purple-600 font-medium">C:</span> We have fraction circles, pattern blocks, and base-10 blocks available. Students have previously worked with whole numbers and basic division but find abstract fraction concepts challenging.<br><br>
-                                <span class="text-red-600 font-medium">H:</span> Format this as a printable lesson plan with clearly labeled sections, timing for each activity, and teacher notes in italics."
-                            </p>
+                        <div class="bg-white p-4 rounded-lg border border-yellow-200">
+                            <p class="font-medium mb-2">When to go straight to TEACH:</p>
+                            <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                <li>You have a clear goal in mind</li>
+                                <li>You're refining or iterating on existing work</li>
+                                <li>You need a specific format for immediate use</li>
+                                <li>You're short on time and need a direct result</li>
+                                <li>You know exactly what you want the AI to create</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
                 <!-- The CO-TEACH Workflow -->
-                <div class="mb-10">
-                    <h3 class="text-2xl font-bold mb-4 text-blue-700">The CO-TEACH Workflow</h3>
-                    <div class="bg-white p-6 rounded-lg border border-gray-200">
-                        <ol class="space-y-6">
-                            <li class="flex">
-                                <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Start with the CO Phase</h4>
-                                    <p class="text-gray-700 mb-2">
-                                        Begin by asking the AI to generate multiple approaches or ideas for your teaching need. Focus on quantity and diversity.
-                                    </p>
-                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
-                                        "Generate 4 different approaches for teaching _____. For each approach, explain the basic concept, target learning style, and main advantages."
-                                    </div>
+                <div class="bg-white p-6 rounded-lg border border-gray-200 mb-6">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-800">The Complete Workflow</h3>
+                    <ol class="space-y-6">
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Start with the CO Phase</h4>
+                                <p class="text-gray-700 mb-2">
+                                    Begin by asking the AI to generate multiple approaches or ideas for your teaching need. Focus on quantity and diversity.
+                                </p>
+                                <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                    "Generate 4 different approaches for teaching _____. For each approach, explain the basic concept, target learning style, and main advantages."
                                 </div>
-                            </li>
-                            <li class="flex">
-                                <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">2</div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Evaluate the Options</h4>
-                                    <p class="text-gray-700 mb-2">
-                                        Review the generated options and assess which best fits your needs. You can ask the AI to help with this evaluation.
-                                    </p>
-                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
-                                        "Given my context of _____, which of these approaches would be most effective for my students? Please explain your reasoning."
-                                    </div>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">2</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Evaluate the Options</h4>
+                                <p class="text-gray-700 mb-2">
+                                    Review the generated options and assess which best fits your needs. You can ask the AI to help with this evaluation.
+                                </p>
+                                <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                    "Given my context of _____, which of these approaches would be most effective for my students? Please explain your reasoning."
                                 </div>
-                            </li>
-                            <li class="flex">
-                                <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Select the Best Option</h4>
-                                    <p class="text-gray-700 mb-2">
-                                        Choose the most promising approach to develop in detail. You may combine elements from multiple options.
-                                    </p>
-                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
-                                        "I'd like to develop approach #2 further, but incorporate the visual element from approach #4."
-                                    </div>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Select the Best Option</h4>
+                                <p class="text-gray-700 mb-2">
+                                    Choose the most promising approach to develop in detail. You may combine elements from multiple options.
+                                </p>
+                                <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                    "I'd like to develop approach #2 further, but incorporate the visual element from approach #4."
                                 </div>
-                            </li>
-                            <li class="flex">
-                                <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold mr-3">4</div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Apply the TEACH Framework</h4>
-                                    <p class="text-gray-700 mb-2">
-                                        Use the TEACH structure to develop your chosen approach into a complete, classroom-ready resource.
-                                    </p>
-                                    <div class="bg-yellow-50 p-3 rounded-lg text-sm italic">
-                                        "Now, create a detailed lesson plan using approach #2 with these specifications:<br>
-                                        T: [Task]<br>
-                                        E: [Example]<br>
-                                        A: [Audience]<br>
-                                        C: [Context]<br>
-                                        H: [How to Format]"
-                                    </div>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold mr-3">4</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Apply the TEACH Framework</h4>
+                                <p class="text-gray-700 mb-2">
+                                    Use the TEACH structure to develop your chosen approach into a complete, classroom-ready resource.
+                                </p>
+                                <div class="bg-yellow-50 p-3 rounded-lg text-sm italic">
+                                    "Now, create a detailed lesson plan using approach #2 with these specifications:<br>
+                                    T: [Task]<br>
+                                    E: [Example]<br>
+                                    A: [Audience]<br>
+                                    C: [Context]<br>
+                                    H: [How to Format]"
                                 </div>
-                            </li>
-                            <li class="flex">
-                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-3">5</div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Refine and Implement</h4>
-                                    <p class="text-gray-700 mb-2">
-                                        Review the final result, make any necessary adjustments, and implement in your classroom.
-                                    </p>
-                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
-                                        "This looks good, but can you adjust the timing to fit a 45-minute class period and add a quick exit ticket assessment?"
-                                    </div>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-3">5</div>
+                            <div>
+                                <h4 class="font-bold text-lg">Refine and Implement</h4>
+                                <p class="text-gray-700 mb-2">
+                                    Review the final result, make any necessary adjustments, and implement in your classroom.
+                                </p>
+                                <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                    "This looks good, but can you adjust the timing to fit a 45-minute class period and add a quick exit ticket assessment?"
                                 </div>
-                            </li>
-                        </ol>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CO Phase Details -->
+        <div id="co-section" class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-6 text-blue-700">The CO Phase: Creating Options</h2>
+                <p class="mb-6 text-lg text-gray-700">
+                    The CO phase represents a critical thinking approach where AI serves as a co-intelligent partner in your ideation process. 
+                    Starting with "Create Options" allows you to explore diverse possibilities before committing to a specific approach.
+                </p>
+                
+                <!-- Benefits of CO Phase -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <h4 class="font-bold text-lg mb-2 text-blue-600">Expanded Possibilities</h4>
+                        <p class="text-gray-700">
+                            AI can rapidly generate diverse approaches to a teaching challenge, exposing you to ideas you might not have considered. 
+                            This broadens your perspective and provides a range of options to evaluate.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <h4 class="font-bold text-lg mb-2 text-blue-600">Creative Breakthrough</h4>
+                        <p class="text-gray-700">
+                            When facing a creative block, starting with CO allows you to quickly generate multiple starting points.
+                            These initial ideas can spark your own creativity and lead to innovative teaching approaches.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <h4 class="font-bold text-lg mb-2 text-blue-600">Decision Support</h4>
+                        <p class="text-gray-700">
+                            Having multiple options helps you make more informed decisions about which approach best suits your students' needs and your teaching style.
+                            You can evaluate ideas rather than just accepting the first solution.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                        <h4 class="font-bold text-lg mb-2 text-blue-600">Time Efficiency</h4>
+                        <p class="text-gray-700">
+                            While it may seem counterintuitive, exploring options first often saves time in the long run by preventing you from investing effort in a single approach that may not be optimal.
+                        </p>
                     </div>
                 </div>
 
-                <div class="flex justify-center mb-8">
-                    <a href="examples.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors flex items-center">
-                        See Example Prompts
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                <!-- CO Process -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
+                        <h4 class="font-bold text-lg mb-2 text-blue-700">1. Divergent Thinking</h4>
+                        <p class="text-gray-700">
+                            Ask AI to generate multiple different approaches to your challenge. 
+                            Focus on quantity and diversity of ideas rather than depth at this stage.
+                        </p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
+                        <h4 class="font-bold text-lg mb-2 text-blue-700">2. Evaluation</h4>
+                        <p class="text-gray-700">
+                            Critically assess the options based on your specific needs, constraints, and teaching context.
+                            Consider which options best align with your goals.
+                        </p>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
+                        <h4 class="font-bold text-lg mb-2 text-blue-700">3. Selection</h4>
+                        <p class="text-gray-700">
+                            Choose the most promising option(s) to develop further using the TEACH framework.
+                            You may combine elements from multiple options.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CO Prompting Tips -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-blue-700">Effective CO Prompts Should:</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Ask for multiple different approaches</li>
+                            <li>Encourage variety in the generated options</li>
+                            <li>Specify the number of options you want</li>
+                            <li>Include some constraints or requirements</li>
+                        </ul>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-2">
+                            <li>Provide enough context for relevance</li>
+                            <li>Request brief summaries of each option</li>
+                            <li>Ask for the pros and cons of each approach</li>
+                            <li>Avoid being too specific about implementation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Example CO Prompt -->
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                    <h3 class="text-xl font-bold mb-4 text-blue-700">Example CO Prompt:</h3>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                        <p class="italic text-gray-700">
+                            "Generate 3-5 different approaches for teaching fractions to 4th graders who are struggling with the concept. 
+                            For each approach, provide a brief summary, the main learning style it targets, and 2-3 pros and cons. 
+                            Our classroom has access to basic manipulatives and tablets, but no specialized math equipment."
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <a href="co-prompts.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition flex items-center space-x-2">
+                            <span>See More CO Prompt Examples</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEACH Framework Details -->
+        <div id="teach-section" class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-6 text-yellow-600">The TEACH Framework</h2>
+                <p class="mb-6 text-lg text-gray-700">
+                    The TEACH framework is a structured approach to creating highly effective AI prompts. Each letter represents a key component that helps the AI generate precisely what you need.
+                </p>
+
+                <!-- TEACH Components Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-blue-800">T - Task</h3>
+                            <span class="importance-pill importance-high">Essential</span>
+                        </div>
+                        <p class="mb-3">Start with an <strong>action verb</strong> that clearly defines what you want the AI to do.</p>
+                        <div class="bg-white p-4 rounded border border-gray-200 mb-3">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-1">Examples:</h4>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>Generate a list of...</li>
+                                <li>Write a lesson plan about...</li>
+                                <li>Create an assessment for...</li>
+                                <li>Explain the concept of...</li>
+                                <li>Analyze this student writing sample...</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                            <p class="text-sm text-gray-600"><strong>Why it matters:</strong> The task sets the primary direction for the AI. Without a clear task, the AI might generate unfocused or inappropriate content.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-yellow-800">E - Example</h3>
+                            <span class="importance-pill importance-medium">Important</span>
+                        </div>
+                        <p class="mb-3">Provide <strong>models, frameworks, or samples</strong> to guide the AI toward your desired output style and quality.</p>
+                        <div class="bg-white p-4 rounded border border-gray-200 mb-3">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-1">Examples:</h4>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>Format it like this: [example format]</li>
+                                <li>Use this writing style: [example paragraph]</li>
+                                <li>Follow this structure: [outline or template]</li>
+                                <li>Include sections similar to: [example sections]</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                            <p class="text-sm text-gray-600"><strong>Why it matters:</strong> Examples dramatically improve the AI's understanding of your expectations and help it match your vision more precisely.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-green-50 p-6 rounded-lg border border-green-100">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-green-800">A - Audience</h3>
+                            <span class="importance-pill importance-standard">Helpful</span>
+                        </div>
+                        <p class="mb-3">Define the <strong>persona or role</strong> the AI should take on and who the content is for.</p>
+                        <div class="bg-white p-4 rounded border border-gray-200 mb-3">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-1">Examples:</h4>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>Write as if you are a 3rd grade teacher explaining...</li>
+                                <li>Create content appropriate for middle school students...</li>
+                                <li>Design this for English language learners who are...</li>
+                                <li>Write this for parents of kindergarteners...</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                            <p class="text-sm text-gray-600"><strong>Why it matters:</strong> Defining the audience helps the AI adjust its language, complexity, and tone to be appropriate for the intended readers.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-purple-800">C - Context</h3>
+                            <span class="importance-pill importance-medium">Important</span>
+                        </div>
+                        <p class="mb-3">Give <strong>background details</strong> to refine the response and make it more relevant.</p>
+                        <div class="bg-white p-4 rounded border border-gray-200 mb-3">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-1">Examples:</h4>
+                            <ul class="list-disc pl-5 text-gray-700">
+                                <li>We're studying the water cycle in our unit about...</li>
+                                <li>My students struggle with multiplication facts, especially...</li>
+                                <li>Our school follows the XYZ reading curriculum...</li>
+                                <li>This is for a classroom with limited technology access...</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                            <p class="text-sm text-gray-600"><strong>Why it matters:</strong> Context helps the AI tailor its response to your specific situation, making the output more useful and relevant to your needs.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-50 p-6 rounded-lg border border-red-100 md:col-span-2">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-2xl font-bold text-red-800">H - How to Format</h3>
+                            <span class="importance-pill importance-standard">Helpful</span>
+                        </div>
+                        <p class="mb-3">Specify the <strong>structure and organization</strong> you prefer for the response.</p>
+                        <div class="bg-white p-4 rounded border border-gray-200 mb-3">
+                            <h4 class="text-sm font-semibold text-gray-500 mb-1">Examples:</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="list-disc pl-5 text-gray-700">
+                                    <li>Format as a table with these columns: [column names]</li>
+                                    <li>Present this as bullet points under clear headings</li>
+                                    <li>Organize this in chronological order</li>
+                                    <li>Create a step-by-step guide with numbered steps</li>
+                                </ul>
+                                <ul class="list-disc pl-5 text-gray-700">
+                                    <li>Include a materials list at the beginning</li>
+                                    <li>Structure this as an "I do, we do, you do" lesson</li>
+                                    <li>Format this as a two-column table with pros and cons</li>
+                                    <li>Present this as a rubric with 3 performance levels</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded border border-gray-200">
+                            <p class="text-sm text-gray-600"><strong>Why it matters:</strong> Formatting specifications ensure the AI's response is organized in a way that's easy to use and suits your intended purpose.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component Importance Ranking -->
+                <div class="bg-white border border-gray-200 rounded-lg p-6 shadow-sm mb-8">
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">Component Importance Ranking</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Component</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Importance</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Why</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium">Task (T)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="importance-pill importance-high">Essential</span>
+                                    </td>
+                                    <td class="px-6 py-4">Without a clear task, the AI lacks direction and may produce irrelevant content.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium">Context (C)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="importance-pill importance-medium">Important</span>
+                                    </td>
+                                    <td class="px-6 py-4">Context significantly improves relevance and helps the AI meet your specific needs.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium">Example (E)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="importance-pill importance-medium">Important</span>
+                                    </td>
+                                    <td class="px-6 py-4">Examples dramatically improve output quality by showing exactly what you want.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium">Audience (A)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="importance-pill importance-standard">Helpful</span>
+                                    </td>
+                                    <td class="px-6 py-4">Helps adjust language complexity and tone but can be inferred from context in some cases.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium">How to Format (H)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="importance-pill importance-standard">Helpful</span>
+                                    </td>
+                                    <td class="px-6 py-4">Formatting enhances usability but many responses can be effective in multiple formats.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Example TEACH Prompt -->
+                <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
+                    <h3 class="text-xl font-bold mb-4 text-yellow-700">Example TEACH Prompt:</h3>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                        <p class="text-gray-700">
+                            <span class="text-blue-600 font-medium">T:</span> Create a complete lesson plan for teaching fractions using the manipulatives approach.<br><br>
+                            <span class="text-yellow-600 font-medium">E:</span> Follow this general structure: learning objectives, prerequisite knowledge, materials needed, warm-up activity, main instruction, guided practice, independent practice, assessment, and extensions.<br><br>
+                            <span class="text-green-600 font-medium">A:</span> This is for 4th grade students who are visual and kinesthetic learners struggling with the concept of equivalent fractions.<br><br>
+                            <span class="text-purple-600 font-medium">C:</span> We have fraction circles, pattern blocks, and base-10 blocks available. Students have previously worked with whole numbers and basic division but find abstract fraction concepts challenging.<br><br>
+                            <span class="text-red-600 font-medium">H:</span> Format this as a printable lesson plan with clearly labeled sections, timing for each activity, and teacher notes in italics.
+                        </p>
+                    </div>
+                    <div class="flex justify-center">
+                        <a href="teach-prompts.html" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded-lg transition flex items-center space-x-2">
+                            <span>See More TEACH Prompt Examples</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complete Workflow Example -->
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">Putting It All Together: A Complete Example</h2>
+                <p class="mb-6 text-lg text-gray-700">
+                    Here's a practical demonstration of the CO-TEACH workflow in action, showing how a teacher might use this framework to develop a math lesson.
+                </p>
+
+                <div class="border-l-4 border-blue-500 pl-4 mb-8">
+                    <h3 class="text-xl font-bold text-blue-700 mb-2">Starting Challenge</h3>
+                    <p class="text-gray-700 italic">
+                        "I need to teach fractions to my 4th grade class, but they've been struggling with the concept. I want something engaging that will help them understand equivalent fractions."
+                    </p>
+                </div>
+
+                <!-- Step 1: CO Phase -->
+                <div class="mb-6">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</div>
+                        <h3 class="text-xl font-bold text-blue-700">CO Phase: Creating Options</h3>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
+                        <h4 class="font-bold mb-2">Teacher's Prompt:</h4>
+                        <p class="italic">
+                            "Generate 4 different approaches for teaching equivalent fractions to 4th graders who are struggling with the concept. For each approach, provide a brief summary, the main learning style it targets, and 2-3 pros and cons. Our classroom has access to basic manipulatives and iPads."
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                        <h4 class="font-bold mb-2">AI Response (Summarized):</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="font-bold">Approach 1: Fraction Manipulatives Workshop</p>
+                                <p><strong>Summary:</strong> Hands-on exploration using physical fraction circles, bars, and blocks.</p>
+                                <p><strong>Learning Style:</strong> Kinesthetic, Visual</p>
+                                <p><strong>Pros:</strong> Concrete representation, builds intuitive understanding, highly engaging</p>
+                                <p><strong>Cons:</strong> Material management, transitions between activities can be challenging</p>
+                            </div>
+                            <div>
+                                <p class="font-bold">Approach 2: Digital Fraction Games</p>
+                                <p><strong>Summary:</strong> iPad-based interactive games and simulations focusing on equivalent fractions.</p>
+                                <p><strong>Learning Style:</strong> Visual, Interactive</p>
+                                <p><strong>Pros:</strong> High engagement, immediate feedback, self-paced learning</p>
+                                <p><strong>Cons:</strong> Screen time concerns, technical issues, less tactile experience</p>
+                            </div>
+                            <div>
+                                <p class="font-bold">Approach 3: Real-World Problem Solving</p>
+                                <p><strong>Summary:</strong> Using cooking, measurement, and sharing scenarios to explore equivalent fractions.</p>
+                                <p><strong>Learning Style:</strong> Applied Learning, Collaborative</p>
+                                <p><strong>Pros:</strong> Real-world relevance, authentic application, memorable experiences</p>
+                                <p><strong>Cons:</strong> More prep time, messier, potentially more challenging to assess</p>
+                            </div>
+                            <div>
+                                <p class="font-bold">Approach 4: Fraction Art Project</p>
+                                <p><strong>Summary:</strong> Creating visual art that incorporates equivalent fractions through pattern design.</p>
+                                <p><strong>Learning Style:</strong> Creative, Visual</p>
+                                <p><strong>Pros:</strong> Cross-curricular connections, engaging for artistic learners, creates display materials</p>
+                                <p><strong>Cons:</strong> May be challenging for students who don't enjoy art, concept connections need explicit guidance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Evaluation -->
+                <div class="mb-6">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">2</div>
+                        <h3 class="text-xl font-bold text-blue-700">Evaluation & Selection</h3>
+                    </div>
+                    
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
+                        <h4 class="font-bold mb-2">Teacher's Prompt:</h4>
+                        <p class="italic">
+                            "Given that my students are mostly kinesthetic and visual learners, and that I need to prepare them for an upcoming standardized test that will include equivalent fractions, which approach would be most effective? I'd like something that balances engagement with measurable learning outcomes."
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
+                        <h4 class="font-bold mb-2">AI Response:</h4>
+                        <p>
+                            Based on your students' learning preferences and the standardized test requirement, <strong>Approach 1: Fraction Manipulatives Workshop</strong> would be most effective, with elements from <strong>Approach 3: Real-World Problem Solving</strong> incorporated for context and application.
+                        </p>
+                        <p class="mt-2">
+                            This combination provides hands-on exploration that appeals to kinesthetic and visual learners while creating concrete understanding of equivalent fractions. The real-world elements will help students connect the abstract concepts to practical applications, which aids retention and transfer of knowledge.
+                        </p>
+                        <p class="mt-2">
+                            For standardized test preparation, you can gradually transition from physical manipulatives to visual representations and finally to symbolic notation, which mirrors how these concepts are typically tested. This scaffolded approach builds both understanding and test-taking skills.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3: TEACH Phase -->
+                <div class="mb-6">
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</div>
+                        <h3 class="text-xl font-bold text-yellow-700">TEACH Phase: Structured Development</h3>
+                    </div>
+                    
+                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100 mb-4">
+                        <h4 class="font-bold mb-2">Teacher's TEACH Prompt:</h4>
+                        <p>
+                            <span class="text-blue-600 font-medium">T:</span> Create a detailed lesson plan for teaching equivalent fractions using a combination of hands-on manipulatives and real-world problem solving.<br><br>
+                            <span class="text-yellow-600 font-medium">E:</span> Structure it with clear learning objectives, a materials list, a warm-up activity, main instruction, guided practice, independent practice, assessment, and extension activities.<br><br>
+                            <span class="text-green-600 font-medium">A:</span> This is for 4th grade students who are primarily visual and kinesthetic learners and are preparing for standardized tests.<br><br>
+                            <span class="text-purple-600 font-medium">C:</span> My students struggle with abstract fraction concepts. We have fraction circles, pattern blocks, and measuring tools available. We need to cover finding equivalent fractions, comparing fractions, and representing fractions in different ways.<br><br>
+                            <span class="text-red-600 font-medium">H:</span> Format this as a printable lesson plan with timing for each section, clearly labeled activities, materials needed for each part, and assessment criteria.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-bold mb-2">AI Response:</h4>
+                        <p class="italic text-gray-600 mb-2">[The AI would generate a complete, detailed lesson plan following all the specifications. A full lesson plan would be too long to include here, but it would have all the components requested in the TEACH prompt, tailored exactly to the teacher's needs.]</p>
+                        <p class="text-gray-700">
+                            The response would include:
+                        </p>
+                        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                            <li>Clear learning objectives aligned with standards</li>
+                            <li>A complete materials list for each activity</li>
+                            <li>A progression from concrete manipulatives to more abstract representations</li>
+                            <li>Real-world problem scenarios involving equivalent fractions</li>
+                            <li>Formative and summative assessment strategies</li>
+                            <li>Extension activities for advanced learners</li>
+                            <li>Support strategies for struggling students</li>
+                            <li>Timing guidelines for a 45-60 minute lesson</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Step 4: Refinement -->
+                <div>
+                    <div class="flex items-start mb-4">
+                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-3">4</div>
+                        <h3 class="text-xl font-bold text-green-700">Refinement & Implementation</h3>
+                    </div>
+                    
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-100 mb-4">
+                        <h4 class="font-bold mb-2">Teacher's Final Refinement Prompt:</h4>
+                        <p class="italic">
+                            "This looks great! Could you add a quick 5-minute exit ticket assessment at the end that I can use to identify which students might need additional support tomorrow? Also, can you suggest how I might adapt this lesson for my two students with IEPs who have difficulty with fine motor skills?"
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-bold mb-2">AI Response:</h4>
+                        <p class="italic text-gray-600">[The AI would provide the requested exit ticket assessment and adaptations for students with IEPs, completing the lesson planning process.]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ready to Use Prompt Collections -->
+        <div class="bg-gradient-to-r from-blue-500 to-yellow-500 rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-8 text-white">
+                <h2 class="text-3xl font-bold mb-4">Ready to Try CO-TEACH?</h2>
+                <p class="text-xl mb-6">
+                    Explore our collections of ready-to-use prompts for both the CO and TEACH phases
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="co-prompts.html" class="bg-white text-blue-600 hover:bg-blue-50 rounded-lg p-6 shadow-md transition flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                         </svg>
+                        <h3 class="text-xl font-bold mb-2">CO Prompts Collection</h3>
+                        <p>Ready-to-use prompts for generating multiple approaches to teaching challenges</p>
+                    </a>
+                    <a href="teach-prompts.html" class="bg-white text-yellow-600 hover:bg-yellow-50 rounded-lg p-6 shadow-md transition flex flex-col items-center text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        <h3 class="text-xl font-bold mb-2">TEACH Prompts Collection</h3>
+                        <p>Structured prompts for creating detailed, classroom-ready resources</p>
                     </a>
                 </div>
             </div>

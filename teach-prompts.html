@@ -1,1 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEACH Prompts - Ready-to-Use AI Prompts for Educators</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 
+    <style>
+        .tab-button {
+            @apply px-4 py-2 font-medium text-sm rounded-t-lg focus:outline-none;
+        }
+        .tab-button.active {
+            @apply bg-white border-t-2 border-l border-r border-b-0 text-blue-600 border-t-blue-600;
+        }
+        .tab-button:not(.active) {
+            @apply text-gray-500 hover:text-gray-700 bg-gray-100 border border-gray-200;
+        }
+        
+        .copy-button {
+            @apply absolute top-3 right-3 p-2 rounded-md bg-gray-50 hover:bg-gray-100 transition-colors;
+        }
+        
+        .copy-icon, .check-icon {
+            @apply w-5 h-5;
+        }
+        
+        .copy-icon {
+            @apply text-gray-500;
+        }
+        
+        .check-icon {
+            @apply text-green-500;
+        }
+        
+        .prompt-card {
+            @apply relative bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 transition-all;
+        }
+        
+        .prompt-card:hover {
+            @apply shadow-lg border-blue-200;
+        }
+        
+        .prompt-header {
+            @apply bg-gray-50 p-4 border-b border-gray-200;
+        }
+        
+        .prompt-content {
+            @apply p-5 text-gray-700;
+        }
+        
+        .teach-element {
+            @apply mb-3;
+        }
+        
+        .teach-label {
+            @apply font-bold inline-block;
+        }
+        
+        .t-element {
+            @apply text-blue-600;
+        }
+        
+        .e-element {
+            @apply text-yellow-600;
+        }
+        
+        .a-element {
+            @apply text-green-600;
+        }
+        
+        .c-element {
+            @apply text-purple-600;
+        }
+        
+        .h-element {
+            @apply text-red-600;
+        }
+        
+        .filter-pill {
+            @apply inline-block px-3 py-1 rounded-full text-xs font-medium mr-2 mb-2 cursor-pointer transition-colors;
+        }
+        
+        .filter-pill.active {
+            @apply bg-blue-100 text-blue-800 border border-blue-300;
+        }
+        
+        .filter-pill:not(.active) {
+            @apply bg-gray-100 text-gray-600 border border-gray-200 hover:bg-gray-200;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="text-2xl font-bold flex items-center">
+                <span>CoteachAI</span>
+            </a>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="co-prompts.html" class="hover:underline">CO Prompts</a></li>
+                    <li><a href="teach-prompts.html" class="font-bold border-b-2 border-white">TEACH Prompts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-4 my-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+            <div class="p-6">
+                <h1 class="text-3xl font-bold text-gray-800 mb-4">TEACH Framework Prompts</h1>
+                <p class="text-lg text-gray-700 mb-6">
+                    Ready-to-use prompts built with the TEACH framework. Each prompt is carefully structured to help AI generate high-quality, classroom-ready materials. Simply copy the prompt, paste it into your favorite AI tool, fill in any bracketed placeholders with your specific details, and get results you can use immediately.
+                </p>
+                
+                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
+                    <h2 class="text-xl font-bold text-blue-700 mb-2">How to Use These Prompts</h2>
+                    <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                        <li>Find a prompt that matches your teaching need</li>
+                        <li>Click the copy button in the top right corner of the prompt card</li>
+                        <li>Paste the prompt into ChatGPT, Claude, or any other AI tool</li>
+                        <li>Replace any text in [brackets] with your specific information</li>
+                        <li>Submit and get classroom-ready materials!</li>
+                    </ol>
+                </div>
+                
+                <!-- Prompt Filters -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Filter Prompts</h2>
+                    
+                    <!-- Grade Level Filters -->
+                    <div class="mb-4">
+                        <h3 class="font-bold text-gray-700 mb-2">Grade Level:</h3>
+                        <div class="flex flex-wrap">
+                            <div class="filter-pill active" data-filter="grade" data-value="all">All Grades</div>
+                            <div class="filter-pill" data-filter="grade" data-value="k-2">K-2</div>
+                            <div class="filter-pill" data-filter="grade" data-value="3-5">Grades 3-5</div>
+                            <div class="filter-pill" data-filter="grade" data-value="6-8">Grades 6-8</div>
+                            <div class="filter-pill" data-filter="grade" data-value="9-12">Grades 9-12</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Subject Filters -->
+                    <div>
+                        <h3 class="font-bold text-gray-700 mb-2">Subject Area:</h3>
+                        <div class="flex flex-wrap">
+                            <div class="filter-pill active" data-filter="subject" data-value="all">All Subjects</div>
+                            <div class="filter-pill" data-filter="subject" data-value="ela">ELA</div>
+                            <div class="filter-pill" data-filter="subject" data-value="math">Math</div>
+                            <div class="filter-pill" data-filter="subject" data-value="science">Science</div>
+                            <div class="filter-pill" data-filter="subject" data-value="social-studies">Social Studies</div>
+                            <div class="filter-pill" data-filter="subject" data-value="classroom">Classroom Management</div>
+                            <div class="filter-pill" data-filter="subject" data-value="assessment">Assessment</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab Navigation -->
+                <div class="border-b border-gray-200 mb-6">
+                    <div class="flex overflow-x-auto space-x-1">
+                        <button class="tab-button active" data-tab="all">All Prompts</button>
+                        <button class="tab-button" data-tab="k-2">K-2</button>
+                        <button class="tab-button" data-tab="3-5">Grades 3-5</button>
+                        <button class="tab-button" data-tab="6-8">Grades 6-8</button>
+                        <button class="tab-button" data-tab="9-12">Grades 9-12</button>
+                    </div>
+                </div>
+                
+                <!-- All Prompts Tab Content -->
+                <div id="all" class="tab-content active">
+                    <!-- Dynamic grid that will be filled with all prompts -->
+                    <div class="grid grid-cols-1 gap-6 prompt-container"></div>
+                </div>
+                
+                <!-- K-2 Tab Content -->
+                <div id="k-2" class="tab-content hidden">
+                    <div class="grid grid-cols-1 gap-6">
+                        
+                        <!-- K-2 ELA Prompts -->
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">ELA Prompts (K-2)</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 prompt-container" data-grade="k-2" data-subject="ela">
+                            <!-- Sight Word Activities Prompt -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="ela">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">Sight Word Activities</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Create 5 engaging, hands-on activities to help kindergarten students practice these sight words: [list 5-10 sight words].
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Each activity should be similar to this example: "Sight Word Hopscotch - Draw a hopscotch grid with sight words in each square. Students say the word as they hop on it."
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> These activities are for kindergarten students who are visual and kinesthetic learners beginning to develop their sight word recognition.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> We have limited classroom space but access to basic materials like paper, markers, index cards, and tape. Students know about half of the words already but need practice with quick recognition.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format each activity with a clear title, materials needed, step-by-step instructions, and a brief note on how to make it easier or more challenging depending on student ability.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                    </svg>
+                                    <svg class="check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Phonics Lesson Prompt -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="ela">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">Phonics Lesson Plan</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Design a complete 30-minute phonics lesson teaching the [specific sound pattern, e.g., short 'a' sound, consonant blends, etc.].
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Structure the lesson following the gradual release model: "I do" (teacher modeling), "We do" (guided practice), and "You do" (independent practice).
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> This lesson is for 1st grade students who have mastered letter sounds but are still developing phonemic awareness skills.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> We follow a systematic phonics program but need supplemental lessons to reinforce specific patterns. Several students are struggling with blending sounds into words.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format the lesson with clear time allocations for each section, a list of materials needed, explicit teacher language for modeling, suggested word lists for practice, and a quick formative assessment activity.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                    </svg>
+                                    <svg class="check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Reading Comprehension Activities -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="ela">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">Reading Comprehension Activities</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Create 4 interactive reading comprehension activities focused on [specific skill: main idea, character traits, sequencing, etc.] that can be used with any picture book.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Activities should be similar to: "Story Map Characters - Students draw the main character and add descriptive words around them based on story evidence."
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> These activities are for 2nd grade students who can read simple texts independently but need support with deeper comprehension.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> We do daily read-alouds and guided reading. Students are engaged during reading but struggle to discuss or respond to the text afterward.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format each activity with an engaging title, clear learning objective, materials list, step-by-step instructions, and sample questions to guide student thinking.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                    </svg>
+                                    <svg class="check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- K-2 Math Prompts -->
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">Math Prompts (K-2)</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 prompt-container" data-grade="k-2" data-subject="math">
+                            <!-- Number Sense Activities -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="math">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">Number Sense Activities</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Design 5 hands-on math center activities to develop number sense for numbers [specific range, e.g., 1-20, 1-100].
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Activities should be similar to: "Number Bond Cards - Students use manipulatives to find different ways to make a number and record their findings."
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> These activities are for kindergarten students with varying levels of number recognition and counting skills.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> We have access to counters, ten frames, number cards, and basic art supplies. Students rotate through centers in 15-minute blocks with minimal teacher supervision.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format each activity with a title, learning objective, materials list, setup instructions, student directions (simple enough for non-readers to follow with visual supports), and modification suggestions for different ability levels.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                    </svg>
+                                    <svg class="check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Addition & Subtraction Word Problems -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="math">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">Addition & Subtraction Word Problems</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Create 10 engaging word problems that practice addition and subtraction within [number range, e.g., 20, 100].
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Problems should include various problem types like: "Sara had 8 stickers. Then her friend gave her 5 more stickers. How many stickers does Sara have now?"
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> These problems are for 1st-2nd grade students who understand the basic operations but need practice applying them to real situations.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> Students have been taught addition and subtraction strategies including counting on, making ten, and using number lines. They need experience with different problem structures (add to, take from, compare, etc.).
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format as a printable worksheet with problems numbered and organized from simpler to more complex. Include space for drawing models, showing work, and writing answers. Add a teacher answer key with problem type identified for each question.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                    </svg>
+                                    <svg class="check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <!-- Geometry Lesson Plan -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="math">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">2D Shapes Lesson Plan</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Design a complete lesson plan for teaching and exploring 2D shapes (circle, square, triangle, rectangle, hexagon).
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Structure the lesson with a hook activity, direct instruction, guided exploration, independent practice, and formative assessment.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> This lesson is for 1st grade students who need to identify shapes regardless of orientation or size, and describe their attributes.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> We have pattern blocks, shape templates, and access to a document camera. Students have previously learned basic shape names but confuse shapes when they're rotated or sized differently.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format the lesson plan with clear timing for each section, materials needed, specific questions to ask students, descriptions of activities, and a simple exit ticket to check understanding.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path>
+                                    </svg>
+                                    <svg class="check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- K-2 Science Prompts -->
+                        <h2 class="text-2xl font-bold text-blue-700 mb-4">Science Prompts (K-2)</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 prompt-container" data-grade="k-2" data-subject="science">
+                            <!-- Animal Adaptations Lesson -->
+                            <div class="prompt-card" data-grade="k-2" data-subject="science">
+                                <div class="prompt-header">
+                                    <h3 class="text-xl font-bold">Animal Adaptations Lesson</h3>
+                                </div>
+                                <div class="prompt-content">
+                                    <div class="teach-element">
+                                        <span class="teach-label t-element">T:</span> Create a complete science lesson about animal adaptations focusing on how animals' physical features help them survive in their environments.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label e-element">E:</span> Structure the lesson with an engaging opening (animal guessing game), followed by clear explanations, visual examples, a hands-on activity, and a reflection/assessment component.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label a-element">A:</span> This lesson is for 2nd grade students who are curious about animals but have limited understanding of adaptation concepts.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label c-element">C:</span> We have access to pictures of animals, art supplies, and a classroom with space for movement. This lesson supports our unit on habitats and aligns with NGSS standards for biological evolution.
+                                    </div>
+                                    <div class="teach-element">
+                                        <span class="teach-label h-element">H:</span> Format the lesson plan with clearly labeled sections for objectives, materials, vocabulary, procedure (timed steps), extensions for advanced learners, scaffolds for struggling students, and an assessment component.
+                                    </div>
+                                </div>
+                                <button class="copy-button" title="Copy to clipboard">
+                                    <svg class="copy-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v

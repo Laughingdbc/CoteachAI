@@ -1123,5 +1123,77 @@
     <footer class="bg-gray-100 border-t p-4 text-center text-gray-500 text-sm">
         AI for GP - Helping teachers leverage AI for better teaching and learning
     </footer>
+                <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the Previous and Next buttons
+    const prevButton = document.querySelector('button.Previous') || document.querySelector('button[contains="Previous"]');
+    const nextButton = document.querySelector('button.Next') || document.querySelector('button[contains="Next"]');
+    
+    // Find all the levels
+    let levels = document.querySelectorAll('[id^="level"]');
+    
+    // If no levels were found, try with class-based selectors or other attributes
+    if (levels.length === 0) {
+      levels = document.querySelectorAll('.prompt-level'); // Adjust selector as needed
+    }
+    
+    // Convert to array for easier management
+    levels = Array.from(levels);
+    
+    let currentLevel = 0;
+    
+    function showLevel(level) {
+      // Hide all levels
+      levels.forEach(el => {
+        el.style.display = 'none';
+      });
+      
+      // Show current level
+      if (levels[level]) {
+        levels[level].style.display = 'block';
+      }
+      
+      // Update level indicator
+      const levelIndicator = document.getElementById('level-indicator');
+      if (levelIndicator) {
+        levelIndicator.textContent = `Level ${level + 1}/5: ${getPromptTypeName(level)}`;
+      }
+    }
+    
+    function getPromptTypeName(level) {
+      const names = [
+        "Basic Prompt (T only)",
+        "Better Prompt (T + C)",
+        "Strong Prompt (T + C + A)",
+        "Excellent Prompt (T + C + A + H)",
+        "Expert Prompt (All T.E.A.C.H. Elements)"
+      ];
+      return names[level] || "";
+    }
+    
+    // Previous button click handler
+    if (prevButton) {
+      prevButton.addEventListener('click', function() {
+        if (currentLevel > 0) {
+          currentLevel--;
+          showLevel(currentLevel);
+        }
+      });
+    }
+    
+    // Next button click handler
+    if (nextButton) {
+      nextButton.addEventListener('click', function() {
+        if (currentLevel < levels.length - 1) {
+          currentLevel++;
+          showLevel(currentLevel);
+        }
+      });
+    }
+    
+    // Initialize with the first level
+    showLevel(0);
+  });
+</script>
 </body>
 </html>

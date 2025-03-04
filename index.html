@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for GP - Teacher Prompts</title>
+    
+    <!-- External Libraries -->
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation header -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <h1 class="text-2xl font-bold">AI for GP</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="font-bold border-b-2 border-white">Prompt Collection</a></li>
+                    <li><a href="teach.html" class="hover:underline">T.E.A.C.H. Framework</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="root"></div>
+    
+    <!-- Custom JavaScript -->
+    <script type="text/babel" src="script.js"></script>
+    
+    <!-- Animation Container -->
+    <div id="animation-container" class="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70 z-50" style="display: none;">
+      <div class="bg-white rounded-lg p-6 max-w-3xl w-full mx-4 relative">
+        <button id="close-animation" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
+        <h2 class="text-xl font-bold mb-4 text-center">How to Iterate with AI Prompts</h2>
+        
+        <div id="animation-stage" class="relative h-96 border rounded-lg bg-blue-50 overflow-hidden">
+          <!-- Teacher Character -->
+          <div id="teacher" class="absolute bottom-4 left-8">
+            <div class="relative">
+              <!-- Thought Bubble (initially hidden) -->
+              <div id="thought-bubble" class="absolute bottom-full left-0 mb-2 bg-white p-4 rounded-lg shadow-lg w-64 opacity-0 transition-opacity duration-500">
+                <p id="thought-text" class="text-sm"></p>
+              </div>
+              
+              <!-- Teacher Image -->
+              <svg width="100" height="150" viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                <!-- Head -->
+                <circle cx="50" cy="40" r="30" fill="#8D5524"/>
+                <!-- Hair -->
+                <path d="M25 30 Q50 0 75 30" stroke="#221A0F" stroke-width="20" fill="none"/>
+                <!-- Body -->
+                <rect x="35" y="70" width="30" height="60" fill="#6495ED"/>
+                <!-- Eyes -->
+                <circle cx="40" cy="35" r="3" fill="#000"/>
+                <circle cx="60" cy="35" r="3" fill="#000"/>
+                <!-- Mouth - will change with animation -->
+                <path id="teacher-mouth" d="M40 50 Q50 60 60 50" stroke="#000" stroke-width="2" fill="none"/>
+                <!-- Arms -->
+                <rect id="left-arm" x="15" y="80" width="20" height="8" fill="#6495ED" rx="4"/>
+                <rect id="right-arm" x="65" y="80" width="25" height="8" fill="#6495ED" rx="4" transform="rotate(-15, 65, 80)"/>
+              </svg>
+            </div>
+          </div>
+          
+          <!-- AI/Computer -->
+          <div id="computer" class="absolute bottom-4 right-8">
+            <div class="relative">
+              <!-- Response Bubble (initially hidden) -->
+              <div id="response-bubble" class="absolute bottom-full right-0 mb-2 bg-gray-200 p-4 rounded-lg shadow-lg w-64 opacity-0 transition-opacity duration-500">
+                <p id="response-text" class="text-sm"></p>
+              </div>
+              
+              <!-- Computer/AI Image -->
+              <svg width="120" height="100" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Monitor -->
+                <rect x="10" y="10" width="100" height="70" fill="#333" rx="4"/>
+                <!-- Screen -->
+                <rect x="15" y="15" width="90" height="60" fill="#99CCFF"/>
+                <!-- Stand -->
+                <rect x="45" y="80" width="30" height="10" fill="#333"/>
+                <rect x="55" y="80" width="10" height="20" fill="#333"/>
+                <!-- AI Face on Screen -->
+                <circle cx="60" cy="45" r="20" fill="#FFFFFF" opacity="0.7"/>
+                <circle id="ai-left-eye" cx="50" cy="40" r="3" fill="#333"/>
+                <circle id="ai-right-eye" cx="70" cy="40" r="3" fill="#333"/>
+                <path id="ai-mouth" d="M50 55 Q60 65 70 55" stroke="#333" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Animation Timeline -->
+        <div class="mt-4 flex justify-between">
+          <button id="replay-animation" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            Replay Animation
+          </button>
+          <div class="text-sm text-gray-600">
+            <span id="animation-step">Step 1:</span> <span id="animation-caption">Teacher creates initial prompt</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add button to your main UI to show animation -->
+    <div class="fixed bottom-4 left-4">
+      <button id="show-animation" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-colors flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+          <path d="M2 12a3 3 0 0 0 3-3V6a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3a3 3 0 0 0 3 3"></path>
+          <path d="M2 12v6a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-6"></path>
+          <path d="M14 15v5"></path>
+          <path d="M8 12h8"></path>
+        </svg>
+        How to Use AI Prompts
+      </button>
+    </div>
+
+    <!-- Learn more about T.E.A.C.H. button -->
+    <div class="fixed bottom-4 right-4">
+      <a href="teach.html" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-lg hover:bg-green-700 transition-colors flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+        </svg>
+        Learn the T.E.A.C.H. Framework
+      </a>
+    </div>
+
+    <!-- Include the animation.js script -->
+    <script src="animation.js"></script>
+</body>
+</html>

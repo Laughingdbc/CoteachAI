@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO-TEACH - Effective AI Prompting Framework</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .importance-pill {
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .importance-high {
+            background-color: #FEE2E2;
+            color: #DC2626;
+        }
+        .importance-medium {
+            background-color: #FEF3C7;
+            color: #D97706;
+        }
+        .importance-standard {
+            background-color: #DBEAFE;
+            color: #2563EB;
+        }
+        .flow-arrow {
+            fill: none;
+            stroke: #3B82F6;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .flow-box {
+            fill: white;
+            stroke: #3B82F6;
+            stroke-width: 2;
+            rx: 8;
+            ry: 8;
+        }
+        .flow-diamond {
+            fill: white;
+            stroke: #3B82F6;
+            stroke-width: 2;
+        }
+        .flow-text {
+            font-size: 14px;
+            font-weight: 500;
+            fill: #1F2937;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        .flow-small-text {
+            font-size: 12px;
+            fill: #1F2937;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        .phase-co {
+            fill: #DBEAFE;
+            stroke: #3B82F6;
+        }
+        .phase-teach {
+            fill: #FEF3C7;
+            stroke: #D97706;
+        }
+        @media (max-width: 768px) {
+            .flow-text {
+                font-size: 12px;
+            }
+            .flow-small-text {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <h1 class="text-2xl font-bold">AI for GP</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="index.html" class="hover:underline">Prompt Collection</a></li>
+                    <li><a href="co-teach.html" class="font-bold border-b-2 border-white">CO-TEACH Framework</a></li>
+                    <li><a href="teach.html" class="hover:underline">TEACH Framework</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow p-4 max-w-6xl mx-auto w-full">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-4 text-blue-700">The CO-TEACH Framework</h2>
+                <p class="mb-6 text-lg">
+                    An expanded approach to AI prompting that combines <strong>brainstorming</strong> with <strong>structured execution</strong>. This dual-phase framework helps teachers use AI as a co-intelligent partner in the classroom.
+                </p>
+
+                <!-- Overview Section -->
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-100 mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">Framework Overview</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="bg-white p-4 rounded-lg border border-blue-200 mb-4">
+                                <h4 class="font-bold text-xl text-blue-600 mb-2">CO Phase</h4>
+                                <p class="mb-2"><strong>C</strong>reate <strong>O</strong>ptions</p>
+                                <p class="text-gray-700">The brainstorming phase where you explore multiple possibilities before committing to a specific approach. Ideal for creative tasks and when you need diverse ideas.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-blue-200">
+                                <p class="font-medium mb-2">When to start with CO:</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>You need multiple approaches or ideas</li>
+                                    <li>You're not sure which direction to take</li>
+                                    <li>You want to explore creative possibilities</li>
+                                    <li>You're beginning a new project or unit</li>
+                                    <li>You need to break through a planning block</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-white p-4 rounded-lg border border-yellow-200 mb-4">
+                                <h4 class="font-bold text-xl text-yellow-600 mb-2">TEACH Phase</h4>
+                                <p class="mb-2"><strong>T</strong>ask • <strong>E</strong>xample • <strong>A</strong>udience • <strong>C</strong>ontext • <strong>H</strong>ow to Format</p>
+                                <p class="text-gray-700">The structured execution phase where you refine your chosen approach to create a polished, classroom-ready result.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-yellow-200">
+                                <p class="font-medium mb-2">When to go straight to TEACH:</p>
+                                <ul class="list-disc pl-5 text-gray-700 space-y-1">
+                                    <li>You have a clear goal in mind</li>
+                                    <li>You're refining or iterating on existing work</li>
+                                    <li>You need a specific format for immediate use</li>
+                                    <li>You're short on time and need a direct result</li>
+                                    <li>You know exactly what you want the AI to create</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flow Diagram -->
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">Decision Flow: When to Use CO-TEACH</h3>
+                    <div class="bg-white p-4 rounded-lg border border-gray-200 overflow-x-auto">
+                        <svg width="800" height="580" viewBox="0 0 800 580" class="mx-auto">
+                            <!-- Decision Diamond -->
+                            <polygon points="400,80 500,150 400,220 300,150" class="flow-diamond" />
+                            <text x="400" y="135" class="flow-text">Do you need to</text>
+                            <text x="400" y="155" class="flow-text">explore multiple</text>
+                            <text x="400" y="175" class="flow-text">options first?</text>
+                            
+                            <!-- Yes/No Labels -->
+                            <text x="320" y="170" class="flow-small-text">YES</text>
+                            <text x="480" y="170" class="flow-small-text">NO</text>
+                            
+                            <!-- CO Phase Box -->
+                            <rect x="120" y="260" width="220" height="100" class="phase-co" />
+                            <text x="230" y="290" class="flow-text font-bold">CO PHASE</text>
+                            <text x="230" y="320" class="flow-text">Create Options</text>
+                            <text x="230" y="340" class="flow-small-text">(Brainstorm multiple approaches)</text>
+                            
+                            <!-- TEACH Phase Box (Right) -->
+                            <rect x="460" y="260" width="220" height="220" class="phase-teach" />
+                            <text x="570" y="290" class="flow-text font-bold">TEACH PHASE</text>
+                            <text x="570" y="320" class="flow-text" style="font-size: 13px;">T - Task</text>
+                            <text x="570" y="345" class="flow-text" style="font-size: 13px;">E - Example</text>
+                            <text x="570" y="370" class="flow-text" style="font-size: 13px;">A - Audience</text>
+                            <text x="570" y="395" class="flow-text" style="font-size: 13px;">C - Context</text>
+                            <text x="570" y="420" class="flow-text" style="font-size: 13px;">H - How to Format</text>
+                            <text x="570" y="450" class="flow-small-text">(Create a specific, structured result)</text>
+                            
+                            <!-- Evaluate & Select Box -->
+                            <rect x="120" y="400" width="220" height="80" class="flow-box" />
+                            <text x="230" y="430" class="flow-text">Evaluate & Select Options</text>
+                            <text x="230" y="450" class="flow-small-text">(Choose the best approach)</text>
+                            
+                            <!-- TEACH Phase Box (Left) -->
+                            <rect x="120" y="520" width="220" height="40" class="phase-teach" />
+                            <text x="230" y="540" class="flow-text">Apply TEACH Framework</text>
+                            
+                            <!-- Result Boxes -->
+                            <rect x="120" y="520" width="220" height="40" class="phase-teach" />
+                            <text x="230" y="540" class="flow-text">Apply TEACH Framework</text>
+                            
+                            <rect x="300" y="520" width="200" height="40" class="flow-box" fill="#E0F2FE" />
+                            <text x="400" y="540" class="flow-text font-bold">FINAL RESULT</text>
+                            
+                            <!-- Arrows -->
+                            <!-- From Start to Diamond -->
+                            <line x1="400" y1="20" x2="400" y2="80" class="flow-arrow" />
+                            <circle cx="400" cy="20" r="5" fill="#3B82F6" />
+                            <text x="400" y="10" class="flow-text">START</text>
+                            
+                            <!-- From Diamond to CO -->
+                            <path d="M 300 150 L 240 150 L 240 260" class="flow-arrow" />
+                            
+                            <!-- From Diamond to TEACH -->
+                            <path d="M 500 150 L 570 150 L 570 260" class="flow-arrow" />
+                            
+                            <!-- From CO to Evaluate -->
+                            <line x1="230" y1="360" x2="230" y2="400" class="flow-arrow" />
+                            
+                            <!-- From Evaluate to TEACH -->
+                            <line x1="230" y1="480" x2="230" y2="520" class="flow-arrow" />
+                            
+                            <!-- From TEACH to Result -->
+                            <path d="M 340 540 L 400 540" class="flow-arrow" stroke-dasharray="5,5" />
+                            
+                            <!-- From TEACH (right) to Result -->
+                            <path d="M 570 480 L 570 500 L 450 500 L 400 520" class="flow-arrow" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Benefits of CO Phase -->
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">Why Start with the CO Phase?</h3>
+                    <div class="bg-blue-50 p-6 rounded-lg border border-blue-100">
+                        <p class="mb-4">
+                            The CO phase represents a critical thinking approach where AI serves as a co-intelligent partner in your ideation process. 
+                            Starting with "Create Options" offers several key advantages:
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h4 class="font-bold text-lg mb-2 text-blue-600">Expanded Possibilities</h4>
+                                <p class="text-gray-700">
+                                    AI can rapidly generate diverse approaches to a teaching challenge, exposing you to ideas you might not have considered. 
+                                    This broadens your perspective and provides a range of options to evaluate.
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h4 class="font-bold text-lg mb-2 text-blue-600">Creative Breakthrough</h4>
+                                <p class="text-gray-700">
+                                    When facing a creative block, starting with CO allows you to quickly generate multiple starting points.
+                                    These initial ideas can spark your own creativity and lead to innovative teaching approaches.
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h4 class="font-bold text-lg mb-2 text-blue-600">Decision Support</h4>
+                                <p class="text-gray-700">
+                                    Having multiple options helps you make more informed decisions about which approach best suits your students' needs and your teaching style.
+                                    You can evaluate ideas rather than just accepting the first solution.
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-gray-200">
+                                <h4 class="font-bold text-lg mb-2 text-blue-600">Time Efficiency</h4>
+                                <p class="text-gray-700">
+                                    While it may seem counterintuitive, exploring options first often saves time in the long run by preventing you from investing effort in a single approach that may not be optimal.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CO Phase Detail -->
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">The CO Phase: Creating Options</h3>
+                    <div class="bg-white p-6 rounded-lg border border-blue-100">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">1. Divergent Thinking</h4>
+                                <p class="text-gray-700">
+                                    Ask AI to generate multiple different approaches to your challenge. 
+                                    Focus on quantity and diversity of ideas rather than depth at this stage.
+                                </p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">2. Evaluation</h4>
+                                <p class="text-gray-700">
+                                    Critically assess the options based on your specific needs, constraints, and teaching context.
+                                    Consider which options best align with your goals.
+                                </p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-lg mb-2">3. Selection</h4>
+                                <p class="text-gray-700">
+                                    Choose the most promising option(s) to develop further using the TEACH framework.
+                                    You may combine elements from multiple options.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-6">
+                            <h4 class="font-bold text-lg mb-2">Effective CO Prompts Should:</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <ul class="list-disc pl-5 text-gray-700">
+                                    <li>Ask for multiple different approaches</li>
+                                    <li>Encourage variety in the generated options</li>
+                                    <li>Specify the number of options you want</li>
+                                    <li>Include some constraints or requirements</li>
+                                </ul>
+                                <ul class="list-disc pl-5 text-gray-700">
+                                    <li>Provide enough context for relevance</li>
+                                    <li>Request brief summaries of each option</li>
+                                    <li>Ask for the pros and cons of each approach</li>
+                                    <li>Avoid being too specific about implementation</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-lg mb-2">Example CO Prompt:</h4>
+                            <p class="italic bg-white p-3 rounded border border-gray-200 text-gray-700">
+                                "Generate 3-5 different approaches for teaching fractions to 4th graders who are struggling with the concept. 
+                                For each approach, provide a brief summary, the main learning style it targets, and 2-3 pros and cons. 
+                                Our classroom has access to basic manipulatives and tablets, but no specialized math equipment."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEACH Framework Summary -->
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">The TEACH Phase: Structured Execution</h3>
+                    <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
+                        <p class="mb-4">
+                            After exploring options with the CO phase, the TEACH framework helps you develop your chosen approach into a detailed, classroom-ready resource:
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+                            <div class="bg-white p-3 rounded-lg border border-blue-100">
+                                <h4 class="font-bold text-lg text-blue-700">T</h4>
+                                <p class="font-medium">Task</p>
+                                <p class="text-sm text-gray-600">Define what you want the AI to create with a clear action verb</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-yellow-100">
+                                <h4 class="font-bold text-lg text-yellow-600">E</h4>
+                                <p class="font-medium">Example</p>
+                                <p class="text-sm text-gray-600">Provide models or samples to guide the AI's output style and quality</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-green-100">
+                                <h4 class="font-bold text-lg text-green-600">A</h4>
+                                <p class="font-medium">Audience</p>
+                                <p class="text-sm text-gray-600">Define the persona AI should adopt and who the content is for</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-purple-100">
+                                <h4 class="font-bold text-lg text-purple-600">C</h4>
+                                <p class="font-medium">Context</p>
+                                <p class="text-sm text-gray-600">Provide background details that make the response relevant</p>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-red-100">
+                                <h4 class="font-bold text-lg text-red-600">H</h4>
+                                <p class="font-medium">How to Format</p>
+                                <p class="text-sm text-gray-600">Specify the structure and organization of the response</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <h4 class="font-bold text-lg mb-2">Example TEACH Prompt (Building on CO Selection):</h4>
+                            <p class="italic bg-yellow-50 p-3 rounded text-gray-700">
+                                "<span class="text-blue-600 font-medium">T:</span> Create a complete lesson plan for teaching fractions using the manipulatives approach.<br><br>
+                                <span class="text-yellow-600 font-medium">E:</span> Follow this general structure: learning objectives, prerequisite knowledge, materials needed, warm-up activity, main instruction, guided practice, independent practice, assessment, and extensions.<br><br>
+                                <span class="text-green-600 font-medium">A:</span> This is for 4th grade students who are visual and kinesthetic learners struggling with the concept of equivalent fractions.<br><br>
+                                <span class="text-purple-600 font-medium">C:</span> We have fraction circles, pattern blocks, and base-10 blocks available. Students have previously worked with whole numbers and basic division but find abstract fraction concepts challenging.<br><br>
+                                <span class="text-red-600 font-medium">H:</span> Format this as a printable lesson plan with clearly labeled sections, timing for each activity, and teacher notes in italics."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- The CO-TEACH Workflow -->
+                <div class="mb-10">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-700">The CO-TEACH Workflow</h3>
+                    <div class="bg-white p-6 rounded-lg border border-gray-200">
+                        <ol class="space-y-6">
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Start with the CO Phase</h4>
+                                    <p class="text-gray-700 mb-2">
+                                        Begin by asking the AI to generate multiple approaches or ideas for your teaching need. Focus on quantity and diversity.
+                                    </p>
+                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                        "Generate 4 different approaches for teaching _____. For each approach, explain the basic concept, target learning style, and main advantages."
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">2</div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Evaluate the Options</h4>
+                                    <p class="text-gray-700 mb-2">
+                                        Review the generated options and assess which best fits your needs. You can ask the AI to help with this evaluation.
+                                    </p>
+                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                        "Given my context of _____, which of these approaches would be most effective for my students? Please explain your reasoning."
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Select the Best Option</h4>
+                                    <p class="text-gray-700 mb-2">
+                                        Choose the most promising approach to develop in detail. You may combine elements from multiple options.
+                                    </p>
+                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                        "I'd like to develop approach #2 further, but incorporate the visual element from approach #4."
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold mr-3">4</div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Apply the TEACH Framework</h4>
+                                    <p class="text-gray-700 mb-2">
+                                        Use the TEACH structure to develop your chosen approach into a complete, classroom-ready resource.
+                                    </p>
+                                    <div class="bg-yellow-50 p-3 rounded-lg text-sm italic">
+                                        "Now, create a detailed lesson plan using approach #2 with these specifications:<br>
+                                        T: [Task]<br>
+                                        E: [Example]<br>
+                                        A: [Audience]<br>
+                                        C: [Context]<br>
+                                        H: [How to Format]"
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-3">5</div>
+                                <div>
+                                    <h4 class="font-bold text-lg">Refine and Implement</h4>
+                                    <p class="text-gray-700 mb-2">
+                                        Review the final result, make any necessary adjustments, and implement in your classroom.
+                                    </p>
+                                    <div class="bg-blue-50 p-3 rounded-lg text-sm italic">
+                                        "This looks good, but can you adjust the timing to fit a 45-minute class period and add a quick exit ticket assessment?"
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="flex justify-center mb-8">
+                    <a href="examples.html" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg transition-colors flex items-center">
+                        See Example Prompts
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-100 border-t p-4 text-center text-gray-500 text-sm">
+        AI for GP - Helping teachers leverage AI for better teaching and learning
+    </footer>
+</body>
+</html>

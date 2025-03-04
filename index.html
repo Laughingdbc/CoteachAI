@@ -604,17 +604,43 @@
                 
              <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
             <div class="p-6">
-                <h2 class="text-3xl font-bold mb-6 text-blue-700">Prompt Evolution: From Basic to Advanced</h2>
+
+                <div class="prompt-evolution">
+  <h2 class="text-3xl font-bold mb-6 text-blue-700">Prompt Evolution: From Basic to Advanced</h2>
+  <p class="mb-6 text-lg text-gray-700">
+    See how a teacher's prompt evolves from basic to advanced as each element of the T.E.A.C.H. framework is applied. 
+    Each level demonstrates the dramatic improvement in AI responses when using a structured approach to prompting.
+  </p>
+
+  <!-- Add this navigation bar -->
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="text-xl font-bold text-gray-800" id="level-indicator">Level 1/5: Basic Prompt (T only)</h3>
+    <div class="flex space-x-2">
+      <button id="previousButton" class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition">Previous</button>
+      <button id="nextButton" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition ml-2">Next</button>
+    </div>
+  </div>
+                
+    <h2 class="text-3xl font-bold mb-6 text-blue-700">Prompt Evolution: From Basic to Advanced</h2>
 <p class="mb-6 text-lg text-gray-700">
     See how a teacher's prompt evolves from basic to advanced as each element of the T.E.A.C.H. framework is applied. 
     Each level demonstrates the dramatic improvement in AI responses when using a structured approach to prompting.
 </p>
 
 <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 mb-8">
+    <!-- Add navigation controls -->
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold text-gray-800" id="level-indicator">Level 1/5: Basic Prompt (T only)</h3>
+        <div class="flex space-x-2">
+            <button id="previousButton" class="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300 transition">Previous</button>
+            <button id="nextButton" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition ml-2">Next</button>
+        </div>
+    </div>
+
     <h3 class="text-xl font-bold mb-4 text-gray-800">Scenario: Ms. Rivera, a 4th grade teacher, wants to create a science activity about the water cycle</h3>
-    
-    <!-- Level 1 -->
-    <div class="mb-8 border-b pb-8">
+
+    <!-- Fixed level divs - removed nesting -->
+    <div id="level1" class="mb-8 border-b pb-8">
         <h4 class="font-bold text-lg text-blue-700 mb-4">Level 1/5: Basic Prompt (T only)</h4>
         <div class="flex mb-4">
             <div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0">
@@ -656,9 +682,8 @@
             </div>
         </div>
     </div>
-    
-    <!-- Level 2 -->
-    <div class="mb-8 border-b pb-8">
+
+    <div id="level2" class="mb-8 border-b pb-8" style="display: none;">
         <h4 class="font-bold text-lg text-blue-700 mb-4">Level 2/5: Better Prompt (T + C)</h4>
         <div class="flex mb-4">
             <div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0">
@@ -707,9 +732,8 @@
             </div>
         </div>
     </div>
-    
-    <!-- Level 3 -->
-    <div class="mb-8 border-b pb-8">
+
+    <div id="level3" class="mb-8 border-b pb-8" style="display: none;">
         <h4 class="font-bold text-lg text-blue-700 mb-4">Level 3/5: Strong Prompt (T + C + A)</h4>
         <div class="flex mb-4">
             <div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0">
@@ -760,9 +784,8 @@
             </div>
         </div>
     </div>
-    
-    <!-- Level 4 -->
-    <div class="mb-8 border-b pb-8">
+
+    <div id="level4" class="mb-8 border-b pb-8" style="display: none;">
         <h4 class="font-bold text-lg text-blue-700 mb-4">Level 4/5: Excellent Prompt (T + C + A + H)</h4>
         <div class="flex mb-4">
             <div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0">
@@ -830,9 +853,8 @@
             </div>
         </div>
     </div>
-    
-    <!-- Level 5 -->
-    <div class="mb-4">
+
+    <div id="level5" class="mb-8 border-b pb-8" style="display: none;">
         <h4 class="font-bold text-lg text-blue-700 mb-4">Level 5/5: Expert Prompt (All T.E.A.C.H. Elements)</h4>
         <div class="flex mb-4">
             <div class="w-12 h-12 rounded-full overflow-hidden mr-4 flex-shrink-0">
@@ -918,282 +940,86 @@
     </div>
 </div>
 
-                <!-- Example TEACH Prompt -->
-                <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-100">
-                    <h3 class="text-xl font-bold mb-4 text-yellow-700">Example TEACH Prompt:</h3>
-                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
-                        <p class="text-gray-700">
-                            <span class="text-blue-600 font-medium">T:</span> Create a complete lesson plan for teaching fractions using the manipulatives approach.<br><br>
-                            <span class="text-yellow-600 font-medium">E:</span> Follow this general structure: learning objectives, prerequisite knowledge, materials needed, warm-up activity, main instruction, guided practice, independent practice, assessment, and extensions.<br><br>
-                            <span class="text-green-600 font-medium">A:</span> This is for 4th grade students who are visual and kinesthetic learners struggling with the concept of equivalent fractions.<br><br>
-                            <span class="text-purple-600 font-medium">C:</span> We have fraction circles, pattern blocks, and base-10 blocks available. Students have previously worked with whole numbers and basic division but find abstract fraction concepts challenging.<br><br>
-                            <span class="text-red-600 font-medium">H:</span> Format this as a printable lesson plan with clearly labeled sections, timing for each activity, and teacher notes in italics.
-                        </p>
-                    </div>
-                    <div class="flex justify-center">
-                        <a href="teach-prompts.html" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-2 px-6 rounded-lg transition flex items-center space-x-2">
-                            <span>See More TEACH Prompt Examples</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Complete Workflow Example -->
-        <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
-            <div class="p-6">
-                <h2 class="text-3xl font-bold mb-6 text-gray-800">Putting It All Together: A Complete Example</h2>
-                <p class="mb-6 text-lg text-gray-700">
-                    Here's a practical demonstration of the CO-TEACH workflow in action, showing how a teacher might use this framework to develop a math lesson.
-                </p>
-
-                <div class="border-l-4 border-blue-500 pl-4 mb-8">
-                    <h3 class="text-xl font-bold text-blue-700 mb-2">Starting Challenge</h3>
-                    <p class="text-gray-700 italic">
-                        "I need to teach fractions to my 4th grade class, but they've been struggling with the concept. I want something engaging that will help them understand equivalent fractions."
-                    </p>
-                </div>
-
-                <!-- Step 1: CO Phase -->
-                <div class="mb-6">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">1</div>
-                        <h3 class="text-xl font-bold text-blue-700">CO Phase: Creating Options</h3>
-                    </div>
-                    
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
-                        <h4 class="font-bold mb-2">Teacher's Prompt:</h4>
-                        <p class="italic">
-                            "Generate 4 different approaches for teaching equivalent fractions to 4th graders who are struggling with the concept. For each approach, provide a brief summary, the main learning style it targets, and 2-3 pros and cons. Our classroom has access to basic manipulatives and iPads."
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
-                        <h4 class="font-bold mb-2">AI Response (Summarized):</h4>
-                        <div class="space-y-4">
-                            <div>
-                                <p class="font-bold">Approach 1: Fraction Manipulatives Workshop</p>
-                                <p><strong>Summary:</strong> Hands-on exploration using physical fraction circles, bars, and blocks.</p>
-                                <p><strong>Learning Style:</strong> Kinesthetic, Visual</p>
-                                <p><strong>Pros:</strong> Concrete representation, builds intuitive understanding, highly engaging</p>
-                                <p><strong>Cons:</strong> Material management, transitions between activities can be challenging</p>
-                            </div>
-                            <div>
-                                <p class="font-bold">Approach 2: Digital Fraction Games</p>
-                                <p><strong>Summary:</strong> iPad-based interactive games and simulations focusing on equivalent fractions.</p>
-                                <p><strong>Learning Style:</strong> Visual, Interactive</p>
-                                <p><strong>Pros:</strong> High engagement, immediate feedback, self-paced learning</p>
-                                <p><strong>Cons:</strong> Screen time concerns, technical issues, less tactile experience</p>
-                            </div>
-                            <div>
-                                <p class="font-bold">Approach 3: Real-World Problem Solving</p>
-                                <p><strong>Summary:</strong> Using cooking, measurement, and sharing scenarios to explore equivalent fractions.</p>
-                                <p><strong>Learning Style:</strong> Applied Learning, Collaborative</p>
-                                <p><strong>Pros:</strong> Real-world relevance, authentic application, memorable experiences</p>
-                                <p><strong>Cons:</strong> More prep time, messier, potentially more challenging to assess</p>
-                            </div>
-                            <div>
-                                <p class="font-bold">Approach 4: Fraction Art Project</p>
-                                <p><strong>Summary:</strong> Creating visual art that incorporates equivalent fractions through pattern design.</p>
-                                <p><strong>Learning Style:</strong> Creative, Visual</p>
-                                <p><strong>Pros:</strong> Cross-curricular connections, engaging for artistic learners, creates display materials</p>
-                                <p><strong>Cons:</strong> May be challenging for students who don't enjoy art, concept connections need explicit guidance</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2: Evaluation -->
-                <div class="mb-6">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center font-bold mr-3">2</div>
-                        <h3 class="text-xl font-bold text-blue-700">Evaluation & Selection</h3>
-                    </div>
-                    
-                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
-                        <h4 class="font-bold mb-2">Teacher's Prompt:</h4>
-                        <p class="italic">
-                            "Given that my students are mostly kinesthetic and visual learners, and that I need to prepare them for an upcoming standardized test that will include equivalent fractions, which approach would be most effective? I'd like something that balances engagement with measurable learning outcomes."
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg border border-gray-200 mb-4">
-                        <h4 class="font-bold mb-2">AI Response:</h4>
-                        <p>
-                            Based on your students' learning preferences and the standardized test requirement, <strong>Approach 1: Fraction Manipulatives Workshop</strong> would be most effective, with elements from <strong>Approach 3: Real-World Problem Solving</strong> incorporated for context and application.
-                        </p>
-                        <p class="mt-2">
-                            This combination provides hands-on exploration that appeals to kinesthetic and visual learners while creating concrete understanding of equivalent fractions. The real-world elements will help students connect the abstract concepts to practical applications, which aids retention and transfer of knowledge.
-                        </p>
-                        <p class="mt-2">
-                            For standardized test preparation, you can gradually transition from physical manipulatives to visual representations and finally to symbolic notation, which mirrors how these concepts are typically tested. This scaffolded approach builds both understanding and test-taking skills.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Step 3: TEACH Phase -->
-                <div class="mb-6">
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold mr-3">3</div>
-                        <h3 class="text-xl font-bold text-yellow-700">TEACH Phase: Structured Development</h3>
-                    </div>
-                    
-                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-100 mb-4">
-                        <h4 class="font-bold mb-2">Teacher's TEACH Prompt:</h4>
-                        <p>
-                            <span class="text-blue-600 font-medium">T:</span> Create a detailed lesson plan for teaching equivalent fractions using a combination of hands-on manipulatives and real-world problem solving.<br><br>
-                            <span class="text-yellow-600 font-medium">E:</span> Structure it with clear learning objectives, a materials list, a warm-up activity, main instruction, guided practice, independent practice, assessment, and extension activities.<br><br>
-                            <span class="text-green-600 font-medium">A:</span> This is for 4th grade students who are primarily visual and kinesthetic learners and are preparing for standardized tests.<br><br>
-                            <span class="text-purple-600 font-medium">C:</span> My students struggle with abstract fraction concepts. We have fraction circles, pattern blocks, and measuring tools available. We need to cover finding equivalent fractions, comparing fractions, and representing fractions in different ways.<br><br>
-                            <span class="text-red-600 font-medium">H:</span> Format this as a printable lesson plan with timing for each section, clearly labeled activities, materials needed for each part, and assessment criteria.
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 class="font-bold mb-2">AI Response:</h4>
-                        <p class="italic text-gray-600 mb-2">[The AI would generate a complete, detailed lesson plan following all the specifications. A full lesson plan would be too long to include here, but it would have all the components requested in the TEACH prompt, tailored exactly to the teacher's needs.]</p>
-                        <p class="text-gray-700">
-                            The response would include:
-                        </p>
-                        <ul class="list-disc pl-5 text-gray-700 space-y-1">
-                            <li>Clear learning objectives aligned with standards</li>
-                            <li>A complete materials list for each activity</li>
-                            <li>A progression from concrete manipulatives to more abstract representations</li>
-                            <li>Real-world problem scenarios involving equivalent fractions</li>
-                            <li>Formative and summative assessment strategies</li>
-                            <li>Extension activities for advanced learners</li>
-                            <li>Support strategies for struggling students</li>
-                            <li>Timing guidelines for a 45-60 minute lesson</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Step 4: Refinement -->
-                <div>
-                    <div class="flex items-start mb-4">
-                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center font-bold mr-3">4</div>
-                        <h3 class="text-xl font-bold text-green-700">Refinement & Implementation</h3>
-                    </div>
-                    
-                    <div class="bg-green-50 p-4 rounded-lg border border-green-100 mb-4">
-                        <h4 class="font-bold mb-2">Teacher's Final Refinement Prompt:</h4>
-                        <p class="italic">
-                            "This looks great! Could you add a quick 5-minute exit ticket assessment at the end that I can use to identify which students might need additional support tomorrow? Also, can you suggest how I might adapt this lesson for my two students with IEPs who have difficulty with fine motor skills?"
-                        </p>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-lg border border-gray-200">
-                        <h4 class="font-bold mb-2">AI Response:</h4>
-                        <p class="italic text-gray-600">[The AI would provide the requested exit ticket assessment and adaptations for students with IEPs, completing the lesson planning process.]</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Ready to Use Prompt Collections -->
-        <div class="bg-gradient-to-r from-blue-500 to-yellow-500 rounded-lg shadow-md overflow-hidden mb-8">
-            <div class="p-8 text-white">
-                <h2 class="text-3xl font-bold mb-4">Ready to Try CO-TEACH?</h2>
-                <p class="text-xl mb-6">
-                    Explore our collections of ready-to-use prompts for both the CO and TEACH phases
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <a href="co-prompts.html" class="bg-white text-blue-600 hover:bg-blue-50 rounded-lg p-6 shadow-md transition flex flex-col items-center text-center">
-       <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-2">CO Prompts Collection</h3>
-                        <p>Ready-to-use prompts for generating multiple approaches to teaching challenges</p>
-    </a>
-    <a href="teach-prompts.html" class="bg-white text-yellow-600 hover:bg-yellow-50 rounded-lg p-6 shadow-md transition flex flex-col items-center text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                        <h3 class="text-xl font-bold mb-2">TEACH Prompts Collection</h3>
-                        <p>Structured prompts for creating detailed, classroom-ready resources</p>
-    </a>
-</div>
-            </div>
-        </div>
-    </main>
-
-    <footer class="bg-gray-100 border-t p-4 text-center text-gray-500 text-sm">
-        AI for GP - Helping teachers leverage AI for better teaching and learning
-    </footer>
-                <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get the Previous and Next buttons
-    const prevButton = document.querySelector('button.Previous') || document.querySelector('button[contains="Previous"]');
-    const nextButton = document.querySelector('button.Next') || document.querySelector('button[contains="Next"]');
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the Previous and Next buttons by ID
+  const prevButton = document.getElementById('previousButton');
+  const nextButton = document.getElementById('nextButton');
+  
+  // Find all the level divs by ID
+  const levels = [
+    document.getElementById('level1'),
+    document.getElementById('level2'),
+    document.getElementById('level3'),
+    document.getElementById('level4'),
+    document.getElementById('level5')
+  ].filter(Boolean); // Remove any null elements
+  
+  let currentLevel = 0;
+  
+  function showLevel(level) {
+    // Hide all levels
+    levels.forEach(el => {
+      if (el) el.style.display = 'none';
+    });
     
-    // Find all the levels
-    let levels = document.querySelectorAll('[id^="level"]');
-    
-    // If no levels were found, try with class-based selectors or other attributes
-    if (levels.length === 0) {
-      levels = document.querySelectorAll('.prompt-level'); // Adjust selector as needed
+    // Show current level
+    if (levels[level]) {
+      levels[level].style.display = 'block';
     }
     
-    // Convert to array for easier management
-    levels = Array.from(levels);
-    
-    let currentLevel = 0;
-    
-    function showLevel(level) {
-      // Hide all levels
-      levels.forEach(el => {
-        el.style.display = 'none';
-      });
-      
-      // Show current level
-      if (levels[level]) {
-        levels[level].style.display = 'block';
-      }
-      
-      // Update level indicator
-      const levelIndicator = document.getElementById('level-indicator');
-      if (levelIndicator) {
-        levelIndicator.textContent = `Level ${level + 1}/5: ${getPromptTypeName(level)}`;
-      }
-    }
-    
-    function getPromptTypeName(level) {
-      const names = [
-        "Basic Prompt (T only)",
-        "Better Prompt (T + C)",
-        "Strong Prompt (T + C + A)",
-        "Excellent Prompt (T + C + A + H)",
-        "Expert Prompt (All T.E.A.C.H. Elements)"
+    // Update level indicator
+    const levelIndicator = document.getElementById('level-indicator');
+    if (levelIndicator) {
+      const levelNames = [
+        "Level 1/5: Basic Prompt (T only)",
+        "Level 2/5: Better Prompt (T + C)",
+        "Level 3/5: Strong Prompt (T + C + A)",
+        "Level 4/5: Excellent Prompt (T + C + A + H)",
+        "Level 5/5: Expert Prompt (All T.E.A.C.H. Elements)"
       ];
-      return names[level] || "";
+      levelIndicator.textContent = levelNames[level];
     }
     
-    // Previous button click handler
+    // Update button states
     if (prevButton) {
-      prevButton.addEventListener('click', function() {
-        if (currentLevel > 0) {
-          currentLevel--;
-          showLevel(currentLevel);
-        }
-      });
+      prevButton.disabled = level === 0;
     }
-    
-    // Next button click handler
     if (nextButton) {
-      nextButton.addEventListener('click', function() {
-        if (currentLevel < levels.length - 1) {
-          currentLevel++;
-          showLevel(currentLevel);
-        }
-      });
+      nextButton.disabled = level === levels.length - 1;
     }
-    
-    // Initialize with the first level
-    showLevel(0);
-  });
+  }
+  
+  // Previous button click handler
+  if (prevButton) {
+    prevButton.addEventListener('click', function() {
+      if (currentLevel > 0) {
+        currentLevel--;
+        showLevel(currentLevel);
+      }
+    });
+  }
+  
+  // Next button click handler
+  if (nextButton) {
+    nextButton.addEventListener('click', function() {
+      if (currentLevel < levels.length - 1) {
+        currentLevel++;
+        showLevel(currentLevel);
+      }
+    });
+  }
+  
+  // Initialize with the first level
+  showLevel(0);
+
+  // Log debug information to help troubleshoot
+  console.log("Previous button:", prevButton);
+  console.log("Next button:", nextButton);
+  console.log("Levels found:", levels);
+});
 </script>
+                    
 </body>
 </html>
+                    

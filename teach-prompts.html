@@ -3,36 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TEACH Prompt Builder - Interactive Tool</title>
+    <title>Interactive TEACH Prompt Builder - CoteachAI</title>
     
     <!-- External Libraries -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+
     <style>
-        .importance-pill {
-            padding: 2px 8px;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-        .importance-high {
-            background-color: #FEE2E2;
-            color: #DC2626;
-        }
-        .importance-medium {
-            background-color: #FEF3C7;
-            color: #D97706;
-        }
-        .importance-standard {
-            background-color: #DBEAFE;
-            color: #2563EB;
-        }
-        
         .step-indicator {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 2rem;
             position: relative;
+            margin-bottom: 2rem;
         }
         
         .step-indicator::before {
@@ -47,8 +31,8 @@
         }
         
         .step {
-            width: 2.5rem;
-            height: 2.5rem;
+            width: 3rem;
+            height: 3rem;
             border-radius: 50%;
             background: white;
             border: 2px solid #e5e7eb;
@@ -58,6 +42,8 @@
             font-weight: bold;
             position: relative;
             z-index: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
         }
         
         .step.active {
@@ -78,7 +64,7 @@
         
         .input-section.active {
             display: block;
-            animation: fadeIn 0.5s;
+            animation: fadeIn 0.3s;
         }
         
         @keyframes fadeIn {
@@ -86,34 +72,86 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .t-element-color { color: #3B82F6; }
-        .e-element-color { color: #D97706; }
-        .a-element-color { color: #10B981; }
-        .c-element-color { color: #8B5CF6; }
-        .h-element-color { color: #EF4444; }
+        .importance-pill {
+            padding: 2px 8px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .importance-high {
+            background-color: #FEE2E2;
+            color: #DC2626;
+        }
+        .importance-medium {
+            background-color: #FEF3C7;
+            color: #D97706;
+        }
+        .importance-standard {
+            background-color: #DBEAFE;
+            color: #2563EB;
+        }
         
-        .t-element-bg { background-color: #DBEAFE; }
-        .e-element-bg { background-color: #FEF3C7; }
-        .a-element-bg { background-color: #D1FAE5; }
-        .c-element-bg { background-color: #EDE9FE; }
-        .h-element-bg { background-color: #FEE2E2; }
+        .preview-section {
+            margin-bottom: 0.75rem;
+            padding: 0.5rem;
+            border-radius: 0.375rem;
+            display: none;
+        }
+        
+        .preview-label {
+            font-weight: bold;
+        }
+        
+        .t-bg { background-color: #EBF5FF; }
+        .e-bg { background-color: #FEF7E6; }
+        .a-bg { background-color: #ECFDF5; }
+        .c-bg { background-color: #F5F3FF; }
+        .h-bg { background-color: #FEF2F2; }
+        
+        .t-text { color: #3B82F6; }
+        .e-text { color: #D97706; }
+        .a-text { color: #10B981; }
+        .c-text { color: #8B5CF6; }
+        .h-text { color: #EF4444; }
         
         #preview-panel {
-            max-height: 400px;
+            max-height: 500px;
             overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+        
+        #toast-message {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.75rem 1.5rem;
+            background-color: #10B981;
+            color: white;
+            border-radius: 0.5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        #toast-message.show {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         .tooltip {
             position: relative;
-            display: inline-block;
             cursor: help;
         }
         
-        .tooltip .tooltiptext {
+        .tooltip .tooltip-text {
             visibility: hidden;
             width: 200px;
             background-color: #1F2937;
-            color: #fff;
+            color: white;
             text-align: center;
             border-radius: 6px;
             padding: 8px;
@@ -127,12 +165,13 @@
             font-size: 0.875rem;
         }
         
-        .tooltip:hover .tooltiptext {
+        .tooltip:hover .tooltip-text {
             visibility: visible;
             opacity: 1;
         }
     </style>
 </head>
+
 <body class="bg-gray-50 min-h-screen">
     <header class="bg-blue-600 text-white p-4 shadow-md">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
@@ -158,24 +197,24 @@
                     Build powerful AI prompts step by step using the T.E.A.C.H. framework. This tool will guide you through creating each component of an effective prompt and combine them into a structured format that will generate high-quality, classroom-ready materials from AI tools.
                 </p>
                 
-                <!-- Progress Tracker -->
+                <!-- Progress Indicator -->
                 <div class="step-indicator mb-8">
-                    <div class="step active" id="step-1">T</div>
-                    <div class="step" id="step-2">E</div>
-                    <div class="step" id="step-3">A</div>
-                    <div class="step" id="step-4">C</div>
-                    <div class="step" id="step-5">H</div>
+                    <div class="step active" id="step-t" data-section="t">T</div>
+                    <div class="step" id="step-e" data-section="e">E</div>
+                    <div class="step" id="step-a" data-section="a">A</div>
+                    <div class="step" id="step-c" data-section="c">C</div>
+                    <div class="step" id="step-h" data-section="h">H</div>
                 </div>
                 
-                <!-- Two-Column Layout -->
-                <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
-                    <!-- Input Section - 3 columns -->
-                    <div class="lg:col-span-3">
+                <!-- Two-column layout for input form and preview -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Left column: Input form -->
+                    <div class="md:col-span-2">
                         <!-- T: Task Section -->
-                        <div class="input-section active" id="section-1">
+                        <div class="input-section active" id="section-t">
                             <div class="bg-blue-50 p-5 rounded-lg border border-blue-100 mb-6">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h2 class="text-2xl font-bold t-element-color">T - Task</h2>
+                                    <h2 class="text-2xl font-bold t-text">T - Task</h2>
                                     <span class="importance-pill importance-high">Essential</span>
                                 </div>
                                 <p class="mb-3">Start with an <strong>action verb</strong> that clearly defines what you want the AI to do. This sets the foundation for your entire prompt.</p>
@@ -198,13 +237,13 @@
                                     
                                     <div class="mb-4">
                                         <label for="task-input" class="block text-sm font-medium text-gray-700 mb-1">Your Task:</label>
-                                        <textarea id="task-input" rows="3" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Start with a clear action verb (create, design, generate, etc.)"></textarea>
+                                        <textarea id="task-input" rows="3" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Start with a clear action verb (create, design, generate, etc.)"></textarea>
                                         <p id="task-error" class="hidden text-red-500 text-sm mt-1">Please enter a task to continue.</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex justify-end">
-                                    <button id="next-1" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
+                                    <button id="next-t" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
                                         Next: Example
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -215,10 +254,10 @@
                         </div>
                         
                         <!-- E: Example Section -->
-                        <div class="input-section" id="section-2">
+                        <div class="input-section" id="section-e">
                             <div class="bg-yellow-50 p-5 rounded-lg border border-yellow-100 mb-6">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h2 class="text-2xl font-bold e-element-color">E - Example</h2>
+                                    <h2 class="text-2xl font-bold e-text">E - Example</h2>
                                     <span class="importance-pill importance-medium">Important</span>
                                 </div>
                                 <p class="mb-3">Provide <strong>models, frameworks, or samples</strong> to guide the AI toward your desired output style and quality.</p>
@@ -240,19 +279,19 @@
                                     
                                     <div class="mb-4">
                                         <label for="example-input" class="block text-sm font-medium text-gray-700 mb-1">Your Example:</label>
-                                        <textarea id="example-input" rows="3" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe the format, structure, or example elements you want to include..."></textarea>
+                                        <textarea id="example-input" rows="3" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe the format, structure, or example elements you want to include..."></textarea>
                                         <p id="example-error" class="hidden text-red-500 text-sm mt-1">Please provide an example to continue.</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex justify-between">
-                                    <button id="prev-2" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
+                                    <button id="prev-e" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                                         </svg>
                                         Previous
                                     </button>
-                                    <button id="next-2" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
+                                    <button id="next-e" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
                                         Next: Audience
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -263,10 +302,10 @@
                         </div>
                         
                         <!-- A: Audience Section -->
-                        <div class="input-section" id="section-3">
+                        <div class="input-section" id="section-a">
                             <div class="bg-green-50 p-5 rounded-lg border border-green-100 mb-6">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h2 class="text-2xl font-bold a-element-color">A - Audience</h2>
+                                    <h2 class="text-2xl font-bold a-text">A - Audience</h2>
                                     <span class="importance-pill importance-standard">Helpful</span>
                                 </div>
                                 <p class="mb-3">Define the <strong>persona or role</strong> the AI should take on and who the content is for. This helps the AI adjust its language and complexity appropriately.</p>
@@ -288,19 +327,19 @@
                                     
                                     <div class="mb-4">
                                         <label for="audience-input" class="block text-sm font-medium text-gray-700 mb-1">Your Audience:</label>
-                                        <textarea id="audience-input" rows="3" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe who will be using the content and any relevant characteristics..."></textarea>
+                                        <textarea id="audience-input" rows="3" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe who will be using the content and any relevant characteristics..."></textarea>
                                         <p id="audience-error" class="hidden text-red-500 text-sm mt-1">Please describe your audience to continue.</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex justify-between">
-                                    <button id="prev-3" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
+                                    <button id="prev-a" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                                         </svg>
                                         Previous
                                     </button>
-                                    <button id="next-3" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
+                                    <button id="next-a" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
                                         Next: Context
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -311,10 +350,10 @@
                         </div>
                         
                         <!-- C: Context Section -->
-                        <div class="input-section" id="section-4">
+                        <div class="input-section" id="section-c">
                             <div class="bg-purple-50 p-5 rounded-lg border border-purple-100 mb-6">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h2 class="text-2xl font-bold c-element-color">C - Context</h2>
+                                    <h2 class="text-2xl font-bold c-text">C - Context</h2>
                                     <span class="importance-pill importance-medium">Important</span>
                                 </div>
                                 <p class="mb-3">Give <strong>background details</strong> to refine the response and make it more relevant to your specific situation.</p>
@@ -336,19 +375,19 @@
                                     
                                     <div class="mb-4">
                                         <label for="context-input" class="block text-sm font-medium text-gray-700 mb-1">Your Context:</label>
-                                        <textarea id="context-input" rows="3" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Provide relevant background information, curriculum connections, available resources..."></textarea>
+                                        <textarea id="context-input" rows="3" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Provide relevant background information, curriculum connections, available resources..."></textarea>
                                         <p id="context-error" class="hidden text-red-500 text-sm mt-1">Please provide context to continue.</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex justify-between">
-                                    <button id="prev-4" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
+                                    <button id="prev-c" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                                         </svg>
                                         Previous
                                     </button>
-                                    <button id="next-4" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
+                                    <button id="next-c" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
                                         Next: How to Format
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -359,10 +398,10 @@
                         </div>
                         
                         <!-- H: How to Format Section -->
-                        <div class="input-section" id="section-5">
+                        <div class="input-section" id="section-h">
                             <div class="bg-red-50 p-5 rounded-lg border border-red-100 mb-6">
                                 <div class="flex justify-between items-start mb-2">
-                                    <h2 class="text-2xl font-bold h-element-color">H - How to Format</h2>
+                                    <h2 class="text-2xl font-bold h-text">H - How to Format</h2>
                                     <span class="importance-pill importance-standard">Helpful</span>
                                 </div>
                                 <p class="mb-3">Specify the <strong>structure and organization</strong> you prefer for the response. This ensures you receive the output in a format that meets your needs.</p>
@@ -370,8 +409,8 @@
                                 <div class="bg-white p-4 rounded border border-gray-200 mb-3">
                                     <h3 class="text-sm font-semibold text-gray-500 mb-1">Guiding Questions:</h3>
                                     <ul class="list-disc pl-5 text-gray-700 mb-4">
-                                        <li>What organization method would work best?</li>
-                                        <li>What specific sections or elements are needed?</li>
+                                        <li>What organization method would work best for this content?</li>
+                                        <li>What specific sections or elements should be included?</li>
                                         <li>How should the information be presented visually?</li>
                                     </ul>
                                     
@@ -384,13 +423,13 @@
                                     
                                     <div class="mb-4">
                                         <label for="format-input" class="block text-sm font-medium text-gray-700 mb-1">Your Format Preferences:</label>
-                                        <textarea id="format-input" rows="3" class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe how you want the response structured and organized..."></textarea>
+                                        <textarea id="format-input" rows="3" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Describe how you want the response structured and organized..."></textarea>
                                         <p id="format-error" class="hidden text-red-500 text-sm mt-1">Please specify a format to continue.</p>
                                     </div>
                                 </div>
                                 
                                 <div class="flex justify-between">
-                                    <button id="prev-5" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
+                                    <button id="prev-h" class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
                                         </svg>
@@ -406,11 +445,11 @@
                             </div>
                         </div>
                         
-                        <!-- Final View (Complete Prompt) -->
+                        <!-- Final Complete Prompt View -->
                         <div class="input-section" id="section-complete">
                             <div class="bg-green-50 p-5 rounded-lg border border-green-200 mb-6">
                                 <h2 class="text-2xl font-bold text-green-800 mb-4">Your Completed TEACH Prompt</h2>
-                                <p class="mb-6">
+                                <p class="mb-4">
                                     Your prompt has been assembled using the TEACH framework! Copy this prompt and paste it into your favorite AI tool to generate high-quality, classroom-ready materials.
                                 </p>
                                 
@@ -418,28 +457,23 @@
                                     <div id="final-prompt" class="whitespace-pre-wrap"></div>
                                 </div>
                                 
-                                <div class="flex flex-col sm:flex-row justify-between gap-4">
-                                    <button id="edit-prompt" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center justify-center">
+                                <div class="flex flex-wrap gap-3 justify-between">
+                                    <button id="edit-prompt" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
                                             <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                                         </svg>
                                         Edit Prompt
                                     </button>
-                                    <button id="copy-prompt" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center justify-center">
+                                    <button id="copy-prompt" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M8 3a1 1 0 00-1 1v2H5a1 1 0 000 2h2v2a1 1 0 002 0V8h2a1 1 0 000-2H9V4a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
+                                            <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15a1 1 0 100-2h-2.586l1.293-1.293a1 1 0 00-1.414-1.414L9 11.586V15a1 1 0 01-1 1H5a1 1 0 01-1-1v-3.586l-1.293 1.293a1 1 0 01-1.414-1.414l3-3a1 1 0 011.414 0L7 10.586V8a1 1 0 011-1h3.586l-1.293-1.293a1 1 0 010-1.414z" />
                                         </svg>
                                         Copy to Clipboard
                                     </button>
-                                    <button id="save-prompt" class="px-4 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition-colors flex items-center justify-center">
+                                    <button id="create-new" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors flex items-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z" />
-                                        </svg>
-                                        Save Prompt
-                                    </button>
-                                    <button id="create-new" class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition-colors flex items-center justify-center">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
-                                            <path fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd" />
+                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd" />
                                         </svg>
                                         Create New Prompt
                                     </button>
